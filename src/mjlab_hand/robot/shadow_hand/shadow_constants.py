@@ -124,7 +124,7 @@ SHADOW_TENDON_ACTION_LIMIT_SCALE, SHADOW_TENDON_ACTION_LIMIT_OFFSET = _compute_a
     _ALL_CTRL_RANGES, SHADOW_TENDON_TARGETS
 )
 
-SHADOW_KEYPOINT_GEOMS = r"lh_(ff|mf|rf|lf|th).*?_collision$"
+SHADOW_KEYPOINT_GEOMS = r"lh_(ff|mf|rf|lf|th)middle_collision$"
 
 FULL_COLLISION = CollisionCfg(
     geom_names_expr=(".*_collision",),
