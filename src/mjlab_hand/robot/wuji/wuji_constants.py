@@ -69,6 +69,8 @@ def get_floating_spec() -> mujoco.MjSpec:
 WUJI_KEYPOINT_GEOMS = r"right_finger.*_link4_collision_1"
 
 FULL_COLLISION = CollisionCfg(
+    contype=1,
+    conaffinity=1,
     geom_names_expr=(".*_collision.*",),
     condim={
         WUJI_KEYPOINT_GEOMS: 6,
@@ -83,6 +85,7 @@ FULL_COLLISION = CollisionCfg(
     },
     priority={
         WUJI_KEYPOINT_GEOMS: 1,
+        ".*": 0,
     },
 )
 

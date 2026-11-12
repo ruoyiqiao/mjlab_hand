@@ -127,6 +127,8 @@ SHADOW_TENDON_ACTION_LIMIT_SCALE, SHADOW_TENDON_ACTION_LIMIT_OFFSET = _compute_a
 SHADOW_KEYPOINT_GEOMS = r"lh_(ff|mf|rf|lf|th)middle_collision$"
 
 FULL_COLLISION = CollisionCfg(
+    contype=1,
+    conaffinity=1,
     geom_names_expr=(".*_collision",),
     condim={
         SHADOW_KEYPOINT_GEOMS: 6,
@@ -141,6 +143,7 @@ FULL_COLLISION = CollisionCfg(
     },
     priority={
         SHADOW_KEYPOINT_GEOMS: 1,
+        ".*": 0,
     },
 )
 

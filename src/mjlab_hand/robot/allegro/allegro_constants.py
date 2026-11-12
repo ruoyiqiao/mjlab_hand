@@ -182,6 +182,8 @@ def make_home_state(
 ALLEGRO_KEYPOINT_GEOMS = r"(ff|mf|rf|th)_tip_collision"
 
 FULL_COLLISION = CollisionCfg(
+    contype=1,
+    conaffinity=1,
     geom_names_expr=(".*_collision",),
     condim={
         ALLEGRO_KEYPOINT_GEOMS: 6,
@@ -196,6 +198,7 @@ FULL_COLLISION = CollisionCfg(
     },
     priority={
         ALLEGRO_KEYPOINT_GEOMS: 1,
+        ".*": 0,
     },
 )
 

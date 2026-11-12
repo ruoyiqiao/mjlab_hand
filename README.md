@@ -30,8 +30,8 @@ Dexterous manipulation tasks based on [mjlab](https://github.com/mujocolab/mjlab
 git clone --recursive https://github.com/ruoyiqiao/mjlab_hand.git
 cd mjlab_hand
 
-# Install dependencies (Python ≥3.13 required)
-uv sync
+# Install locked dependencies (Python 3.13 required)
+uv sync --locked
 ```
 
 ## Quick Start

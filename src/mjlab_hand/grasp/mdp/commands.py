@@ -109,7 +109,7 @@ class GraspMetricsCommand(CommandTerm):
         self.metrics["hand_object_distance"][env_ids] = 0.0
         self._blank_command[env_ids] = 0.0
 
-    def _update_command(self) -> None:
+    def _update_command(self, env_ids: torch.Tensor | None = None) -> None:
         pass
 
     def _debug_vis_impl(self, visualizer: DebugVisualizer) -> None:
@@ -286,7 +286,7 @@ class PoseCommand(CommandTerm):
         min_height = table_z + cfg.min_height_above_table
         self.goal_pos[env_ids, 2] = torch.maximum(self.goal_pos[env_ids, 2], min_height)
 
-    def _update_command(self) -> None:
+    def _update_command(self, env_ids: torch.Tensor | None = None) -> None:
         pass
 
     def _update_metrics(self) -> None:

@@ -6,11 +6,11 @@ readme = "README.md"
 authors = [
     { name = "ruoyiqiao", email = "ryqiao1317@gmail.com" }
 ]
-requires-python = ">=3.13"
+requires-python = ">=3.13,<3.14"
 dependencies = [
-    "mjlab>=1.4.0,<2.0.0",
+    "mjlab==1.6.0",
     "nvitop>=1.6.2",
-    "rsl-rl-lib==5.2.0",
+    "rsl-rl-lib==5.4.2",
     "trimesh>=4.0.0",
 ]
 
@@ -21,11 +21,17 @@ play-object = "mjlab_hand.cli.play_object:main"
 eval-policy = "mjlab_hand.cli.eval:main"
 
 [[tool.uv.index]]
-url = "https://mirrors.aliyun.com/pypi/simple"
+name = "pypi"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
 default = true
 
-[tool.uv.sources]
-rsl-rl-lib = { git = "https://github.com/leggedrobotics/rsl_rl.git", tag = "v5.2.0" }
+[tool.uv]
+constraint-dependencies = [
+    "torch==2.14.0",
+    "warp-lang==1.18.0",
+    # mjviser 0.0.17 requires MuJoCo 4; mjlab 1.6.0 uses MuJoCo 3.11.
+    "mjviser<0.0.17",
+]
 
 [build-system]
 requires = ["uv_build>=0.10.8,<0.11.0"]

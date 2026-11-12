@@ -60,6 +60,8 @@ SHARPA_ACTION_LIMIT_SCALE, SHARPA_ACTION_LIMIT_OFFSET = _compute_action_limits(g
 SHARPA_KEYPOINT_GEOMS = r".*elastomer"
 
 FULL_COLLISION = CollisionCfg(
+    contype=1,
+    conaffinity=1,
     geom_names_expr=(".*",),
     condim={
         SHARPA_KEYPOINT_GEOMS: 6,
@@ -74,6 +76,7 @@ FULL_COLLISION = CollisionCfg(
     },
     priority={
         SHARPA_KEYPOINT_GEOMS: 1,
+        ".*": 0,
     },
 )
 
