@@ -193,11 +193,11 @@ If you find this project useful, please consider citing it:
 
 ## License
 
-| Component | License | Commercial use |
-|---|---|---|
-| Original mjlab_hand code | [Apache-2.0](LICENSE) | Permitted |
-| Hand models (Allegro, LEAP, Shadow, Sharpa, XHand, Wuji) | BSD-2-Clause, MIT or Apache-2.0, per hand | Permitted |
-| ContactDB object meshes (`asset/contactdb`) | ContactDB terms | Not permitted |
+| Component | License |
+|---|---|
+| Original mjlab_hand code | [Apache-2.0](LICENSE) |
+| Hand models (Allegro, LEAP, Shadow, Sharpa, XHand, Wuji) | BSD-2-Clause, MIT or Apache-2.0, per hand |
+| ContactDB object meshes (`asset/contactdb`) | ContactDB terms |
 
 Third-party components keep their upstream licenses; see [NOTICE](NOTICE) and the license file next to each
 component.
