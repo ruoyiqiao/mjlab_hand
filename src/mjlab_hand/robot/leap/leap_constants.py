@@ -10,6 +10,7 @@ Goals:
 
 from __future__ import annotations
 
+from functools import partial
 from pathlib import Path
 
 import mujoco
@@ -106,6 +107,12 @@ _HERE = Path(__file__).parent
 
 leap_hand_XML: Path = _HERE / "xmls" / "right_hand.xml"
 leap_hand_floating_XML: Path = _HERE / "xmls" / "right_hand_floating.xml"
+leap_hand_floating_XML_BY_SIDE: dict[str, Path] = {
+    "right": leap_hand_floating_XML,
+    "left": _HERE
+    / "xmls"
+    / "left_hand_floating.xml",  # tools/allegro4/make_floating_xml.py from menagerie left_hand.xml
+}
 assert leap_hand_XML.exists(), f"Missing MJCF: {leap_hand_XML}"
 
 
@@ -135,10 +142,17 @@ def get_spec() -> mujoco.MjSpec:
     return spec
 
 
-def get_floating_spec() -> mujoco.MjSpec:
-    """Create floating-base MjSpec with base XML actuators preserved."""
-    spec = mujoco.MjSpec.from_file(str(leap_hand_floating_XML))
-    configure_leap_spec_for_ideal_pd(spec, keep_target_names=LEAP_BASE_JOINTS)
+def get_floating_spec(side: str = "right", actuators: str = "sysid") -> mujoco.MjSpec:
+    """Create floating-base MjSpec with base XML actuators preserved.
+
+    ``actuators="sysid"`` (default) removes the finger XML actuators (replaced by the DYNAMIXEL SysID ideal PD + action
+    delay below); ``"menagerie"`` keeps menagerie's own finger position actuators (kp 3.0, kv 0.01, no limit, no delay).
+    """
+    spec = mujoco.MjSpec.from_file(str(leap_hand_floating_XML_BY_SIDE[side]))
+    if actuators == "sysid":
+        configure_leap_spec_for_ideal_pd(spec, keep_target_names=LEAP_BASE_JOINTS)
+    elif actuators != "menagerie":
+        raise ValueError(actuators)
     spec.assets = get_assets(spec.meshdir)
     return spec
 
@@ -343,6 +357,11 @@ ARTICULATION_FLOATING = EntityArticulationInfoCfg(
     soft_joint_pos_limit_factor=0.95,
 )
 
+ARTICULATION_FLOATING_MENAGERIE = EntityArticulationInfoCfg(
+    actuators=(XmlActuatorCfg(target_names_expr=(".*",)),),
+    soft_joint_pos_limit_factor=0.95,
+)
+
 
 # -----------------------------------------------------------------------------
 # Initial pose (open, non-singular)
@@ -505,13 +524,26 @@ def get_leap_hand_cfg() -> EntityCfg:
 def get_leap_floating_hand_cfg(
     pos: tuple[float, float, float] = LEAP_HOME_POS,
     rot: tuple[float, float, float, float] = LEAP_HOME_ROT,
+    side: str = "right",
+    actuators: str = "sysid",
 ) -> EntityCfg:
-    """Return floating-base LEAP hand cfg with base + finger actuation."""
+    """Return floating-base LEAP hand cfg with base + finger actuation (``side``: "right" default, or "left").
+
+    ``actuators``: "sysid" (default: ideal PD from the DYNAMIXEL SysID + 0-20 physics-step action delay) or
+    "menagerie" (menagerie's XML position actuators for every joint; used by LEAP Juggle2).
+    """
+    if actuators not in ("menagerie", "sysid"):
+        raise ValueError(actuators)
     return EntityCfg(
         init_state=make_home_state(pos=pos, rot=rot),
         collisions=(LEAP_COLLISION,),
-        spec_fn=get_floating_spec,
-        articulation=ARTICULATION_FLOATING,
+        # the plain function for the default right hand keeps the config repr (and fingerprints) of earlier runs
+        spec_fn=get_floating_spec
+        if (side, actuators) == ("right", "sysid")
+        else partial(get_floating_spec, side, actuators=actuators),
+        articulation=ARTICULATION_FLOATING_MENAGERIE
+        if actuators == "menagerie"
+        else ARTICULATION_FLOATING,
     )
 
 

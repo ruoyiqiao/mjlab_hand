@@ -1,0 +1,27 @@
+mjlab_hand
+Copyright 2026 Ruoyi Qiao
+
+The original code in this repository is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+This repository also includes third-party components. Each keeps its upstream license; the license
+text is shipped next to the component.
+
+Hand models
+- Allegro hand: MuJoCo Menagerie (SimLab). BSD-2-Clause.
+  src/mjlab_hand/robot/allegro/xmls/LICENSE
+- LEAP hand: MuJoCo Menagerie (Ananye Agarwal). MIT.
+  src/mjlab_hand/robot/leap/xmls/LICENSE
+- Shadow hand: MuJoCo Menagerie. Apache-2.0.
+  src/mjlab_hand/robot/shadow_hand/xmls/LICENSE
+- Sharpa Wave hand: Sharpa Group, https://github.com/sharpa-robotics/sharpa-urdf-usd-xml. Apache-2.0.
+  src/mjlab_hand/robot/sharpa_wave/assets/LICENSE.txt
+- XHand: DexScrew, https://github.com/x-robotics-lab/dexscrew. MIT.
+  src/mjlab_hand/robot/xhand/assets/dexscrew/LICENSE
+- Wuji hand: Wuji Technology, https://github.com/wuji-technology/wuji-description. MIT.
+  src/mjlab_hand/robot/wuji/xmls/LICENSE
+
+Object meshes
+- asset/contactdb: object meshes from ContactDB (Brahmbhatt et al., https://contactdb.cc.gatech.edu/),
+  which modifies 3D models by their original creators. ContactDB releases its data for non-commercial
+  use (https://github.com/samarth-robo/contactdb_utils); these meshes are not covered by the
+  Apache License of this repository.

@@ -1,3 +1,5 @@
+from dataclasses import replace
+
 from mjlab.tasks.registry import register_mjlab_task
 
 from .env_cfgs import sharpa_grasp_env_cfg
@@ -8,6 +10,14 @@ register_mjlab_task(
     env_cfg=sharpa_grasp_env_cfg(),
     play_env_cfg=sharpa_grasp_env_cfg(play=True),
     rl_cfg=sharpa_grasp_ppo_runner_cfg(),
+    runner_cls=None,
+)
+
+register_mjlab_task(
+    task_id="Grasp-Sharpa-Right",
+    env_cfg=sharpa_grasp_env_cfg(side="right"),
+    play_env_cfg=sharpa_grasp_env_cfg(play=True, side="right"),
+    rl_cfg=replace(sharpa_grasp_ppo_runner_cfg(), experiment_name="sharpa_right_grasp"),
     runner_cls=None,
 )
 

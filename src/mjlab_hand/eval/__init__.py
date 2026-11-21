@@ -21,6 +21,10 @@ from mjlab_hand.eval.checkpoint import (
     write_eval_cache,
 )
 from mjlab_hand.eval.config import EvalConfig, add_config_arg, load_config
+
+# DexPBT-style Allegro tasks: registered first so the legacy command-name
+# matchers below can never claim these envs.
+from mjlab_hand.eval.dexpbt_tasks import DexPBTTaskEvaluator  # noqa: E402,F401
 from mjlab_hand.eval.env_setup import (
     default_eval_steps,
     load_policy,
@@ -37,6 +41,7 @@ __all__ = [
     "run_eval",
     "select_evaluator",
     "write_metrics_json",
+    "DexPBTTaskEvaluator",
     "GraspEvaluator",
     "RotationEvaluator",
     "EvalConfig",

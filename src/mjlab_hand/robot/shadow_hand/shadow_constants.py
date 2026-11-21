@@ -23,8 +23,29 @@ _HERE = Path(__file__).parent
 
 SHADOW_XML: Path = _HERE / "xmls" / "left_hand.xml"
 SHADOW_FLOATING_XML: Path = _HERE / "xmls" / "left_hand_floating.xml"
+SHADOW_FLOATING_XML_BY_SIDE: dict[str, Path] = {
+    "left": SHADOW_FLOATING_XML,
+    "right": _HERE
+    / "xmls"
+    / "right_hand_floating.xml",  # tools/allegro4/make_floating_xml.py from menagerie right_hand.xml
+}
 assert SHADOW_XML.exists()
-assert SHADOW_FLOATING_XML.exists()
+assert all(p.exists() for p in SHADOW_FLOATING_XML_BY_SIDE.values())
+
+
+def side_prefix(side: str) -> str:
+    """Body/joint/tendon name prefix of the menagerie Shadow hand: ``lh_`` (left), ``rh_`` (right)."""
+    return {"left": "lh_", "right": "rh_"}[side]
+
+
+def for_side(names, side: str):
+    """Left-hand (``lh_``) names -> the names of ``side`` (tuples/lists/dict keys/strings)."""
+    pre = side_prefix(side)
+    if isinstance(names, str):
+        return names.replace("lh_", pre)
+    if isinstance(names, dict):
+        return {k.replace("lh_", pre): v for k, v in names.items()}
+    return type(names)(n.replace("lh_", pre) for n in names)
 
 
 def get_assets(meshdir: str) -> dict[str, bytes]:
@@ -59,8 +80,8 @@ def get_spec() -> mujoco.MjSpec:
     return _get_spec(SHADOW_XML)
 
 
-def get_floating_spec() -> mujoco.MjSpec:
-    return _get_spec(SHADOW_FLOATING_XML)
+def get_floating_spec(side: str = "left") -> mujoco.MjSpec:
+    return _get_spec(SHADOW_FLOATING_XML_BY_SIDE[side])
 
 
 def _get_actuator_ctrl_ranges(spec: mujoco.MjSpec) -> dict[str, tuple[float, float]]:
@@ -248,6 +269,58 @@ def get_shadow_floating_hand_cfg(
         collisions=(FULL_COLLISION,),
         spec_fn=get_floating_spec,
         articulation=ARTICULATION_FLOATING,
+    )
+
+
+##
+# Floating hands for the shared task layer (tasks_common): both sides, distal-phalanx fingertips.
+#
+# Policy-controlled finger targets: 14 independent finger/thumb joints + 4 tendon lengths (J2 + J1 of FF/MF/RF/LF, the
+# coupled joints stay observable); the two wrist joints are redundant with the floating base and are held at 0.
+##
+SHADOW_WRIST_JOINTS = ("lh_WRJ2", "lh_WRJ1")
+SHADOW_FINGER_JOINT_TARGETS = tuple(n for n in SHADOW_JOINT_TARGETS if n not in SHADOW_WRIST_JOINTS)
+SHADOW_COUPLED_JOINTS = tuple(f"lh_{f}J{j}" for f in ("FF", "MF", "RF", "LF") for j in (2, 1))
+SHADOW_TIP_BODIES = ("lh_ffdistal", "lh_mfdistal", "lh_rfdistal", "lh_lfdistal", "lh_thdistal")
+SHADOW_TIP_GEOMS = r"lh_(ff|mf|rf|lf|th)distal_collision$"
+
+
+def _task_collision(side: str) -> CollisionCfg:
+    tip = for_side(SHADOW_TIP_GEOMS, side)
+    return CollisionCfg(
+        contype=1,
+        conaffinity=1,
+        geom_names_expr=(".*_collision",),
+        condim={tip: 6, ".*_collision": 3},
+        friction={tip: (1.0, 5e-3, 5e-4), ".*_collision": (0.6,)},
+        solref={tip: (0.01, 1)},
+        priority={tip: 1, ".*": 0},
+    )
+
+
+def get_shadow_task_floating_hand_cfg(
+    pos: tuple[float, float, float] = SHADOW_HOME_POS,
+    rot: tuple[float, float, float, float] = SHADOW_HOME_ROT,
+    side: str = "left",
+) -> EntityCfg:
+    """Floating Shadow hand of ``side`` for tasks_common: wrist at 0, grippy distal fingertips."""
+    home = {k: v for k, v in SHADOW_HOME_JOINT_POS.items() if k not in SHADOW_WRIST_JOINTS}
+    home.update({w: 0.0 for w in SHADOW_WRIST_JOINTS})
+    init = EntityCfg.InitialStateCfg(
+        pos=pos, rot=rot, joint_pos=for_side(home, side), joint_vel={".*": 0.0}
+    )
+    joints = XmlActuatorCfg(target_names_expr=for_side(SHADOW_JOINT_TARGETS, side))
+    tendons = XmlActuatorCfg(
+        target_names_expr=for_side(SHADOW_TENDON_TARGETS, side),
+        transmission_type=TransmissionType.TENDON,
+    )
+    return EntityCfg(
+        init_state=init,
+        collisions=(_task_collision(side),),
+        spec_fn=lambda: get_floating_spec(side),
+        articulation=EntityArticulationInfoCfg(
+            actuators=(SHADOW_BASE_ACTUATORS, joints, tendons), soft_joint_pos_limit_factor=0.9
+        ),
     )
 
 

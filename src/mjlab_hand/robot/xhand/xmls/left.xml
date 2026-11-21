@@ -1,0 +1,213 @@
+<mujoco model="dexscrew_xhand_left">
+  <compiler angle="radian" meshdir="../assets/dexscrew/xhand_left/meshes" />
+  <asset>
+    <mesh name="left_hand_link" file="left_hand_link.STL" />
+    <mesh name="left_hand_ee_link" file="left_hand_ee_link.STL" />
+    <mesh name="left_hand_back_link" file="left_hand_back_link.STL" />
+    <mesh name="left_hand_thumb_bend_link" file="left_hand_thumb_bend_link.STL" />
+    <mesh name="left_hand_thumb_rota_link1" file="left_hand_thumb_rota_link1.STL" />
+    <mesh name="left_hand_thumb_rotaback_link1" file="left_hand_thumb_rotaback_link1.STL" />
+    <mesh name="left_hand_thumb_rota_link2" file="left_hand_thumb_rota_link2.STL" />
+    <mesh name="left_hand_thumb_rotaback_link2" file="left_hand_thumb_rotaback_link2.STL" />
+    <mesh name="left_hand_thumb_rota_tip" file="left_hand_thumb_rota_tip.STL" />
+    <mesh name="left_hand_index_bend_link" file="left_hand_index_bend_link.STL" />
+    <mesh name="left_hand_index_rota_link1" file="left_hand_index_rota_link1.STL" />
+    <mesh name="left_hand_index_rotaback_link1" file="left_hand_index_rotaback_link1.STL" />
+    <mesh name="left_hand_index_rota_link2" file="left_hand_index_rota_link2.STL" />
+    <mesh name="left_hand_index_rotaback_link2" file="left_hand_index_rotaback_link2.STL" />
+    <mesh name="left_hand_index_rota_tip" file="left_hand_index_rota_tip.STL" />
+    <mesh name="left_hand_mid_link1" file="left_hand_mid_link1.STL" />
+    <mesh name="left_hand_midback_link1" file="left_hand_midback_link1.STL" />
+    <mesh name="left_hand_mid_link2" file="left_hand_mid_link2.STL" />
+    <mesh name="left_hand_midback_link2" file="left_hand_midback_link2.STL" />
+    <mesh name="left_hand_mid_tip" file="left_hand_mid_tip.STL" />
+    <mesh name="left_hand_ring_link1" file="left_hand_ring_link1.STL" />
+    <mesh name="left_hand_ringback_link1" file="left_hand_ringback_link1.STL" />
+    <mesh name="left_hand_ring_link2" file="left_hand_ring_link2.STL" />
+    <mesh name="left_hand_ringback_link2" file="left_hand_ringback_link2.STL" />
+    <mesh name="left_hand_ring_tip" file="left_hand_ring_tip.STL" />
+    <mesh name="left_hand_pinky_link1" file="left_hand_pinky_link1.STL" />
+    <mesh name="left_hand_pinkyback_link1" file="left_hand_pinkyback_link1.STL" />
+    <mesh name="left_hand_pinky_link2" file="left_hand_pinky_link2.STL" />
+    <mesh name="left_hand_pinkyback_link2" file="left_hand_pinkyback_link2.STL" />
+    <mesh name="left_hand_pinky_tip" file="left_hand_pinky_tip.STL" />
+  </asset>
+  <worldbody>
+    <body name="left_hand_link" gravcomp="1">
+      <inertial pos="-0.00332669 -0.0101782 -0.057061" quat="0.696871 0.0862148 0.0902522 0.706252" mass="0.539104" diaginertia="0.000644416 0.00047764 0.000264513" />
+      <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_link" name="left_hand_link_visual" />
+      <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_link" name="left_hand_link_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+      <body name="left_hand_ee_link" pos="0 0 -0.065" gravcomp="1">
+        <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_ee_link" name="left_hand_ee_link_visual" />
+        <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_ee_link" name="left_hand_ee_link_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+      </body>
+      <body name="left_hand_back_link" pos="0 0 -0.065" gravcomp="1">
+        <inertial pos="-0.00206614 0.0140092 0.000644119" mass="2e-07" diaginertia="1e-11 1e-11 1e-11" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_back_link" name="left_hand_back_link_visual" />
+        <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_back_link" name="left_hand_back_link_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+      </body>
+      <body name="left_hand_index_bend_link" pos="0.0265 -0.0065 -0.0899" gravcomp="1">
+        <inertial pos="-0.000388464 0.000992076 -0.00970333" quat="0.999988 0.00487924 -3.9179e-08 8.02965e-06" mass="0.0691083" diaginertia="1.74e-05 1.67713e-05 3.44873e-06" />
+        <joint name="left_hand_index_bend_joint" pos="0 0 0" axis="0 -1 0" range="-0.175 0.175" actuatorfrcrange="-0.4 0.4" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_bend_link" name="left_hand_index_bend_link_visual" />
+        <body name="left_hand_index_rota_link1" pos="0 0 -0.0178" gravcomp="1">
+          <inertial pos="-3.58049e-05 -0.000530418 -0.0332785" quat="0.99992 -0.00691273 0.00989061 0.00366273" mass="0.062983" diaginertia="1.73856e-05 1.68626e-05 3.19183e-06" />
+          <joint name="left_hand_index_joint1" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_link1" name="left_hand_index_rota_link1_visual" />
+          <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_link1" name="left_hand_index_rota_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          <body name="left_hand_index_rotaback_link1" pos="0 0 -0.0558" gravcomp="1">
+            <inertial pos="0.000148035 0.0115948 0.0241234" mass="2e-08" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_index_rotaback_link1" name="left_hand_index_rotaback_link1_visual" />
+            <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_index_rotaback_link1" name="left_hand_index_rotaback_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+          <body name="left_hand_index_rota_link2" pos="0 0 -0.0558" gravcomp="1">
+            <inertial pos="0.000248362 -0.00119905 -0.021379" quat="0.733502 0.00819027 0.034698 0.678752" mass="0.0158872" diaginertia="2.8328e-06 2.77713e-06 8.40076e-07" />
+            <joint name="left_hand_index_joint2" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-0.4 0.4" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_link2" name="left_hand_index_rota_link2_visual" />
+            <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_link2" name="left_hand_index_rota_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            <body name="left_hand_index_rotaback_link2" pos="0 0 -0.0422483" gravcomp="1">
+              <inertial pos="-0.00015795 0.00758844 0.0176655" mass="1e-08" diaginertia="1e-11 1e-11 1e-11" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_index_rotaback_link2" name="left_hand_index_rotaback_link2_visual" />
+              <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_index_rotaback_link2" name="left_hand_index_rotaback_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            </body>
+            <body name="left_hand_index_rota_tip" pos="0 0 -0.0422483" gravcomp="1">
+              <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_tip" name="left_hand_index_rota_tip_visual" />
+              <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_index_rota_tip" name="left_hand_index_rota_tip_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            </body>
+          </body>
+        </body>
+      </body>
+      <body name="left_hand_mid_link1" pos="0.004 -0.0065 -0.1082" gravcomp="1">
+        <inertial pos="-3.58049e-05 -0.000530418 -0.0332785" quat="0.99992 -0.00691273 0.00989061 0.00366273" mass="0.062983" diaginertia="1.73856e-05 1.68626e-05 3.19183e-06" />
+        <joint name="left_hand_mid_joint1" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_link1" name="left_hand_mid_link1_visual" />
+        <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_link1" name="left_hand_mid_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        <body name="left_hand_midback_link1" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000148035 0.0115948 0.0241234" mass="2e-08" diaginertia="1e-11 1e-11 1e-11" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_midback_link1" name="left_hand_midback_link1_visual" />
+          <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_midback_link1" name="left_hand_midback_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        </body>
+        <body name="left_hand_mid_link2" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000248362 -0.00119905 -0.021379" quat="0.733502 0.00819027 0.034698 0.678752" mass="0.0158872" diaginertia="2.8328e-06 2.77713e-06 8.40076e-07" />
+          <joint name="left_hand_mid_joint2" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-0.4 0.4" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_link2" name="left_hand_mid_link2_visual" />
+          <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_link2" name="left_hand_mid_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          <body name="left_hand_midback_link2" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="-0.00015795 0.00758844 0.0176655" mass="1e-08" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_midback_link2" name="left_hand_midback_link2_visual" />
+            <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_midback_link2" name="left_hand_midback_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+          <body name="left_hand_mid_tip" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_tip" name="left_hand_mid_tip_visual" />
+            <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_mid_tip" name="left_hand_mid_tip_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+        </body>
+      </body>
+      <body name="left_hand_pinky_link1" pos="-0.036 -0.0065 -0.1022" gravcomp="1">
+        <inertial pos="-3.58049e-05 -0.000530418 -0.0332785" quat="0.99992 -0.00691273 0.00989061 0.00366273" mass="0.062983" diaginertia="1.73856e-05 1.68626e-05 3.19183e-06" />
+        <joint name="left_hand_pinky_joint1" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_link1" name="left_hand_pinky_link1_visual" />
+        <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_link1" name="left_hand_pinky_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        <body name="left_hand_pinkyback_link1" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000148035 0.0115948 0.0241234" mass="2e-08" diaginertia="1e-11 1e-11 1e-11" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_pinkyback_link1" name="left_hand_pinkyback_link1_visual" />
+          <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_pinkyback_link1" name="left_hand_pinkyback_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        </body>
+        <body name="left_hand_pinky_link2" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000248362 -0.00119905 -0.021379" quat="0.733502 0.00819027 0.034698 0.678752" mass="0.0158872" diaginertia="2.8328e-06 2.77713e-06 8.40076e-07" />
+          <joint name="left_hand_pinky_joint2" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-0.4 0.4" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_link2" name="left_hand_pinky_link2_visual" />
+          <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_link2" name="left_hand_pinky_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          <body name="left_hand_pinkyback_link2" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="-0.00015795 0.00758844 0.0176655" mass="1e-08" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_pinkyback_link2" name="left_hand_pinkyback_link2_visual" />
+            <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_pinkyback_link2" name="left_hand_pinkyback_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+          <body name="left_hand_pinky_tip" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_tip" name="left_hand_pinky_tip_visual" />
+            <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_pinky_tip" name="left_hand_pinky_tip_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+        </body>
+      </body>
+      <body name="left_hand_ring_link1" pos="-0.016 -0.0065 -0.1052" gravcomp="1">
+        <inertial pos="-3.58049e-05 -0.000530418 -0.0332785" quat="0.99992 -0.00691273 0.00989061 0.00366273" mass="0.062983" diaginertia="1.73856e-05 1.68626e-05 3.19183e-06" />
+        <joint name="left_hand_ring_joint1" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_link1" name="left_hand_ring_link1_visual" />
+        <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_link1" name="left_hand_ring_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        <body name="left_hand_ringback_link1" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000148034 0.0115948 0.0241234" mass="2e-08" diaginertia="1e-11 1e-11 1e-11" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_ringback_link1" name="left_hand_ringback_link1_visual" />
+          <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_ringback_link1" name="left_hand_ringback_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        </body>
+        <body name="left_hand_ring_link2" pos="0 0 -0.0558" gravcomp="1">
+          <inertial pos="0.000248362 -0.00119905 -0.021379" quat="0.733502 0.00819027 0.034698 0.678752" mass="0.0158872" diaginertia="2.8328e-06 2.77713e-06 8.40076e-07" />
+          <joint name="left_hand_ring_joint2" pos="0 0 0" axis="-1 0 0" range="0 1.92" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_link2" name="left_hand_ring_link2_visual" />
+          <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_link2" name="left_hand_ring_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          <body name="left_hand_ringback_link2" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="-0.00015795 0.00758844 0.0176655" mass="1e-08" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_ringback_link2" name="left_hand_ringback_link2_visual" />
+            <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_ringback_link2" name="left_hand_ringback_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+          <body name="left_hand_ring_tip" pos="0 0 -0.0422483" gravcomp="1">
+            <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_tip" name="left_hand_ring_tip_visual" />
+            <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_ring_tip" name="left_hand_ring_tip_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+        </body>
+      </body>
+      <body name="left_hand_thumb_bend_link" pos="0.0228 -0.0095 -0.0305" gravcomp="1">
+        <inertial pos="0.0144315 0.00116654 -6.50666e-05" quat="-0.0321766 0.676172 -0.057127 0.73382" mass="0.0118729" diaginertia="1.62676e-06 1.60121e-06 6.12031e-07" />
+        <joint name="left_hand_thumb_bend_joint" pos="0 0 0" axis="0 0 -1" range="0.6 1.73" actuatorfrcrange="-0.4 0.4" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+        <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_bend_link" name="left_hand_thumb_bend_link_visual" />
+        <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_bend_link" name="left_hand_thumb_bend_link_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+        <body name="left_hand_thumb_rota_link1" pos="0.028599 -0.0083177 0.00178" quat="0.99124 -0.130499 0.00265603 -0.0201745" gravcomp="1">
+          <inertial pos="0.0286994 0.000353013 -0.00135211" quat="0.218359 0.677426 -0.0283879 0.701861" mass="0.132685" diaginertia="4.33741e-05 3.82725e-05 1.41433e-05" />
+          <joint name="left_hand_thumb_rota_joint1" pos="0 0 0" axis="0 1 0" range="-1.05 1.57" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+          <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_link1" name="left_hand_thumb_rota_link1_visual" />
+          <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_link1" name="left_hand_thumb_rota_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          <body name="left_hand_thumb_rotaback_link1" pos="0.0553 0 0" gravcomp="1">
+            <inertial pos="-0.0296284 -0.00145635 0.00757347" mass="6e-08" diaginertia="1e-11 1e-11 1e-11" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_thumb_rotaback_link1" name="left_hand_thumb_rotaback_link1_visual" />
+            <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_thumb_rotaback_link1" name="left_hand_thumb_rotaback_link1_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+          </body>
+          <body name="left_hand_thumb_rota_link2" pos="0.0553 0 0" gravcomp="1">
+            <inertial pos="0.0228414 0.000460794 -0.000578252" quat="0.0914361 0.712103 0.114188 0.686666" mass="0.0353657" diaginertia="9.10121e-06 7.73992e-06 3.51887e-06" />
+            <joint name="left_hand_thumb_rota_joint2" pos="0 0 0" axis="0 1 0" range="-0.17 1.83" actuatorfrcrange="-1.1 1.1" limited="true" damping="0.0" frictionloss="0.01" armature="0.001" actuatorfrclimited="true" />
+            <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_link2" name="left_hand_thumb_rota_link2_visual" />
+            <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_link2" name="left_hand_thumb_rota_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            <body name="left_hand_thumb_rotaback_link2" pos="0.0499881 0 0" gravcomp="1">
+              <inertial pos="-0.0256682 0.000513275 0.00926149" mass="4e-08" diaginertia="1e-11 1e-11 1e-11" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.941 0.941 0.941 1" mesh="left_hand_thumb_rotaback_link2" name="left_hand_thumb_rotaback_link2_visual" />
+              <geom type="mesh" rgba="0.941 0.941 0.941 1" mesh="left_hand_thumb_rotaback_link2" name="left_hand_thumb_rotaback_link2_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            </body>
+            <body name="left_hand_thumb_rota_tip" pos="0.0499881 0 0" gravcomp="1">
+              <inertial pos="0 0 0" mass="5.65e-06" diaginertia="1e-11 1e-11 1e-11" />
+              <geom type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_tip" name="left_hand_thumb_rota_tip_visual" />
+              <geom type="mesh" rgba="0.055 0.055 0.063 1" mesh="left_hand_thumb_rota_tip" name="left_hand_thumb_rota_tip_collision" group="3" contype="2" conaffinity="1" friction="1.0 0.005 0.0001" />
+            </body>
+          </body>
+        </body>
+      </body>
+    </body>
+  </worldbody>
+  <option timestep="0.005" integrator="implicitfast" />
+  <actuator>
+    <position name="left_hand_index_bend_joint" joint="left_hand_index_bend_joint" kp="3.0" kv="0.01" ctrlrange="-0.175 0.175" ctrllimited="true" forcerange="-0.4 0.4" forcelimited="true" />
+    <position name="left_hand_index_joint1" joint="left_hand_index_joint1" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_index_joint2" joint="left_hand_index_joint2" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-0.4 0.4" forcelimited="true" />
+    <position name="left_hand_mid_joint1" joint="left_hand_mid_joint1" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_mid_joint2" joint="left_hand_mid_joint2" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-0.4 0.4" forcelimited="true" />
+    <position name="left_hand_pinky_joint1" joint="left_hand_pinky_joint1" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_pinky_joint2" joint="left_hand_pinky_joint2" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-0.4 0.4" forcelimited="true" />
+    <position name="left_hand_ring_joint1" joint="left_hand_ring_joint1" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_ring_joint2" joint="left_hand_ring_joint2" kp="3.0" kv="0.01" ctrlrange="0 1.92" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_thumb_bend_joint" joint="left_hand_thumb_bend_joint" kp="3.0" kv="0.01" ctrlrange="0.6 1.73" ctrllimited="true" forcerange="-0.4 0.4" forcelimited="true" />
+    <position name="left_hand_thumb_rota_joint1" joint="left_hand_thumb_rota_joint1" kp="3.0" kv="0.01" ctrlrange="-1.05 1.57" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+    <position name="left_hand_thumb_rota_joint2" joint="left_hand_thumb_rota_joint2" kp="3.0" kv="0.01" ctrlrange="-0.17 1.83" ctrllimited="true" forcerange="-1.1 1.1" forcelimited="true" />
+  </actuator>
+</mujoco>

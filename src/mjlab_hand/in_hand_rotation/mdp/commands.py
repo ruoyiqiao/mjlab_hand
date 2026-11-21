@@ -9,7 +9,9 @@ from mjlab.entity import Entity
 from mjlab.managers.command_manager import CommandTerm, CommandTermCfg
 from mjlab.managers.scene_entity_config import SceneEntityCfg
 from mjlab.utils.lab_api.math import (
+    quat_apply,
     quat_error_magnitude,
+    quat_mul,
     random_orientation,
 )
 
@@ -57,6 +59,22 @@ class RotationCommand(CommandTerm):
         cfg.hand_asset_cfg.resolve(env.scene)
         self.hand: Entity = env.scene[cfg.hand_asset_cfg.name]
         self._hand_base_body_ids = [int(i) for i in cfg.hand_asset_cfg.body_ids]
+        # Reset events write mocap poses before forward kinematics updates xpos.
+        # Keep only topology: local body poses are read live when composing.
+        self._hand_base_fixed_chain: tuple[int, ...] | None = None
+        if self.hand.is_fixed_base and self.hand.is_mocap:
+            indexing = self.hand.data.indexing
+            body = int(indexing.body_ids[self._hand_base_body_ids[0]])
+            root = indexing.root_body_id
+            chain = []
+            model = env.sim.mj_model
+            while body != root:
+                if body == 0 or model.body_jntnum[body] != 0:
+                    break
+                chain.append(body)
+                body = int(model.body_parentid[body])
+            else:
+                self._hand_base_fixed_chain = tuple(reversed(chain))
         self.object: Entity = env.scene[cfg.entity_name]
         self._object_free_joint_qpos_adr = self.object.indexing.free_joint_q_adr.clone()
         if self._object_free_joint_qpos_adr.numel() != 7:
@@ -125,6 +143,23 @@ class RotationCommand(CommandTerm):
     def compute_success(self) -> torch.Tensor:
         return self.metrics["rot_dist"] < self.cfg.success_tolerance
 
+    def _hand_base_pos_at_reset(self) -> torch.Tensor:
+        """Read current mocap-relative palm position without a simulator step.
+
+        Task offsets remain world-frame vectors. Bodies not rigidly attached
+        to a mocap root retain the existing forward-kinematics query.
+        """
+        if self._hand_base_fixed_chain is None:
+            return self.hand.data.body_link_pos_w[:, self._hand_base_body_ids[0]]
+        data = self.hand.data
+        mocap_id = data.indexing.mocap_id
+        pos = data.data.mocap_pos[:, mocap_id]
+        quat = data.data.mocap_quat[:, mocap_id]
+        for body in self._hand_base_fixed_chain:
+            pos = pos + quat_apply(quat, data.model.body_pos[:, body].expand_as(pos))
+            quat = quat_mul(quat, data.model.body_quat[:, body].expand_as(quat))
+        return pos
+
     def _resample_command(self, env_ids: torch.Tensor) -> None:
         n = len(env_ids)
 
@@ -133,7 +168,7 @@ class RotationCommand(CommandTerm):
         new_target_quat = random_orientation(n, self.device)
         self.target_quat[env_ids] = new_target_quat
 
-        hand_base_pos = self.hand.data.body_link_pos_w[env_ids, self._hand_base_body_ids[0]]
+        hand_base_pos = self._hand_base_pos_at_reset()[env_ids]
         goal_pos = hand_base_pos + self._goal_pos_offset_from_hand_base
         self.target_pos[env_ids] = goal_pos
 

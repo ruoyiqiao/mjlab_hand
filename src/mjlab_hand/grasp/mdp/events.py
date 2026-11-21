@@ -7,7 +7,8 @@ from mjlab.entity import Entity
 from mjlab.managers.scene_entity_config import SceneEntityCfg
 from mjlab.utils.lab_api.math import quat_from_euler_xyz
 
-from mjlab_hand.grasp.mdp.table_utils import get_table_reference_pos_w
+from mjlab_hand.grasp.mdp.reset_geometry import object_lowest_offset
+from mjlab_hand.grasp.mdp.table_utils import get_table_reference_pos_w, get_table_top_height
 
 if TYPE_CHECKING:
     from mjlab.envs import ManagerBasedRlEnv
@@ -123,8 +124,13 @@ def reset_object_on_table(
     table_name: str,
     position_range: dict,
     orientation_range: dict,
+    clearance: float = 0.001,
 ) -> None:
-    """Reset object position on the table surface."""
+    """Sample the same XY/orientation distribution, clear of the table surface."""
+    if clearance < 0:
+        raise ValueError("Object clearance must be nonnegative")
+    if len(env_ids) == 0:
+        return
     obj: Entity = env.scene[object_name]
     table: Entity = env.scene[table_name]
 
@@ -144,8 +150,6 @@ def reset_object_on_table(
             torch.rand(n, device=env.device) * (position_range["y"][1] - position_range["y"][0])
             + position_range["y"][0]
         )
-
-    pos[:, 2] += 0.05
 
     roll = torch.zeros(n, device=env.device)
     pitch = torch.zeros(n, device=env.device)
@@ -171,6 +175,11 @@ def reset_object_on_table(
         )
 
     quat = quat_from_euler_xyz(roll, pitch, yaw)
+    pos[:, 2] = (
+        get_table_top_height(table)[env_ids]
+        + clearance
+        - object_lowest_offset(env, object_name, quat)
+    )
 
     pose = torch.cat([pos, quat], dim=-1)
     obj.write_root_link_pose_to_sim(pose, env_ids=env_ids)
