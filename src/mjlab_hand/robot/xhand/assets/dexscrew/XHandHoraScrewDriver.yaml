@@ -1,0 +1,153 @@
+name: XHandHoraScrewDriver
+physics_engine: ${..physics_engine}
+on_evaluation: False
+eval_cache_name: debug
+
+env:
+  initPose: 'screwdriver_inclined'
+  numEnvs: ${resolve_default:8192,${...num_envs}}
+  numActions: 12 # xhand = 12
+  envSpacing: 0.5
+
+  episodeLength: 800
+  aggregateMode: 1
+
+  controller:
+    torque_control: True
+    controlFrequencyInv: 10  # 20Hz
+    pgain: 3
+    dgain: 0.01 
+    action_scale: 0.05
+    torque_limit: 300.0
+
+  rotation_axis: '+z'
+
+  clipObservations: 5.0
+  clipActions: 1.0
+  reset_dist_threshold: 0.05
+  reset_z_threshold: 0.0
+
+  # Random forces applied to the object
+  forceScale: 2.0
+  randomForceProbScalar: 0.25
+  forceDecay: 0.9
+  forceDecayInterval: 0.08
+
+  hora:
+    propHistoryLen: 30
+    point_cloud_sampled_dim: 100
+
+  reward:
+    angvelClipMin: -4.0
+    angvelClipMax: 4.0
+    # Angular velocity penalty threshold curriculum: [init_threshold, final_threshold, start_step, end_step]
+    # angvelPenaltyThres: 10.0  # Fixed threshold (no curriculum)
+    angvelPenaltyThres: [7.5, 15.0, 30000000, 60000000]
+    rotate_reward_scale: 2.5
+    pose_diff_penalty_scale: -0.1
+    torque_penalty_scale: -3.0
+    work_penalty_scale: -0.01
+    rotate_penalty_scale: -0.3
+    pc_z_dist_penalty_scale: -1.0
+    proximity_reward_scale: 2.0
+  
+  baseObjScale: 1.0
+  randomization:
+    randomizeMass: True
+    randomizeMassLower: 0.04
+    randomizeMassUpper: 0.06
+    randomizeCOM: True
+    randomizeCOMLower: -0.001
+    randomizeCOMUpper: 0.001
+    randomizeFriction: True
+    randomizeFrictionLower: 0.5
+    randomizeFrictionUpper: 8.0
+    randomizeScale: True
+    randomize_hand_scale: False
+    # if scale_list_init is True, randomizeScaleLower and randomizeScaleUpper is not useful
+    scaleListInit: True
+    randomizeScaleList: [0.85, 0.90, 0.95, 1.0, 1.05, 1.10, 1.15, 1.20, 1.25]
+    randomizeScaleLower: 0.80
+    randomizeScaleUpper: 1.20
+    randomizePDGains: True
+    randomizePGainLower: 2.7
+    randomizePGainUpper: 3.3
+    randomizeDGainLower: 0.009 
+    randomizeDGainUpper: 0.011 
+    obs_noise_e_scale: 0.01
+    obs_noise_t_scale: 0.005
+    pose_noise_scale: 0
+    action_noise_e_scale: 0.01
+    action_noise_t_scale: 0.005
+    # stage 2 specific:
+    noisy_rpy_scale: 0.1
+    noisy_pos_scale: 0.02
+
+  privInfo:
+    enableObjPos: True
+    enableObjScale: True
+    enableObjMass: True
+    enableObjCOM: True
+    enableObjFriction: True
+    enable_obj_restitution: True
+    enable_tactile: False
+    contact_input_dim: 4
+    contact_form: 'gpu_contact'
+    contact_input: 'binary'
+    contact_binarize_threshold: 0.1
+    enable_obj_orientation: True 
+    enable_obj_linvel: True 
+    enable_obj_angvel: True 
+    enable_ft_pos: True 
+    enable_ft_orientation: True 
+    enable_ft_linvel: True 
+    enable_ft_angvel: True 
+    enable_hand_scale: True 
+    enable_nut_contact: True
+    enable_nut_pos: True
+    enable_nut_dof_vel: True
+    enable_nut_dof_pos: True
+    enable_screw_joint_friction: True
+    enable_hand_position: False
+    enable_hand_orientation: False
+    enable_hand_joint_pos: False
+    enable_pgain: False
+    enable_dgain: False
+
+
+  object:
+    type: 'screw_driver'
+    evalObjectType: null # set to a string object name to evaluate on only one object
+    sampleProb: [1.0]
+    nut_termination_history_len: 60
+    nut_stagnation_eps: 0.003
+    screw_upper_limit: 628.3185
+    thumb_range_limit: True
+    object_tilt: True  # Enable ±5 degree object tilt randomization
+
+  asset:
+    handAsset: "assets/xhand_left/urdf/xhand_left.urdf"
+
+  # set to True if you use camera sensors in the environment
+  enableCameraSensors: False
+
+sim:
+  dt: 0.005 # 200 Hz
+  substeps: 1
+  up_axis: 'z'
+  use_gpu_pipeline: ${eq:${...pipeline},'gpu'}
+  gravity: [0.0, 0.0, -9.81]
+  physx:
+    num_threads: ${....num_threads}
+    solver_type: ${....solver_type}
+    use_gpu: ${contains:'cuda',${....sim_device}} # set to False to run on CPU
+    num_position_iterations: 8
+    num_velocity_iterations: 0
+    max_gpu_contact_pairs: 8388608 # 8*1024*1024
+    num_subscenes: ${....num_subscenes}
+    contact_offset: 0.002
+    rest_offset: 0.0
+    bounce_threshold_velocity: 0.2
+    max_depenetration_velocity: 1000.0
+    default_buffer_size_multiplier: 5.0
+    contact_collection: 1 # 0: CC_NEVER (don't collect contact info), 1: CC_LAST_SUBSTEP (collect only contacts on last substep), 2: CC_ALL_SUBSTEPS (default - all contacts)

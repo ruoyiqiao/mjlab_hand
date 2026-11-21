@@ -104,9 +104,12 @@ def main():
     EvaluatorCls = select_evaluator(env)
     print(f"[INFO] Detected task type: {EvaluatorCls.name}")
 
-    num_steps = (
-        cfg.num_steps if cfg.num_steps is not None else default_eval_steps(EvaluatorCls.name)
-    )
+    if cfg.num_steps is not None:
+        num_steps = cfg.num_steps
+    elif hasattr(EvaluatorCls, "default_steps"):
+        num_steps = EvaluatorCls.default_steps(env)
+    else:
+        num_steps = default_eval_steps(EvaluatorCls.name)
     print(f"[INFO] Eval steps: {num_steps}")
 
     args.grasp_success_tolerance = cfg.grasp_success_tolerance

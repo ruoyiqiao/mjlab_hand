@@ -1,0 +1,853 @@
+{
+ "leap": {
+  "cup_rel_palm": {
+   "left": [
+    -0.040560975670814514,
+    0.05629940703511238,
+    0.08781546354293823
+   ],
+   "right": [
+    -0.040560975670814514,
+    0.05629940703511238,
+    0.08781546354293823
+   ]
+  },
+  "hand_y": 0.131,
+  "poses": {
+   "left": {
+    "cup": {
+     "if_dip": 0.8,
+     "if_mcp": 0.8,
+     "if_pip": 0.8,
+     "if_rot": 0.0,
+     "mf_dip": 0.8,
+     "mf_mcp": 0.8,
+     "mf_pip": 0.8,
+     "mf_rot": 0.0,
+     "rf_dip": 0.8,
+     "rf_mcp": 0.8,
+     "rf_pip": 0.8,
+     "rf_rot": 0.0,
+     "th_axl": -0.349,
+     "th_cmc": 0.8,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    },
+    "grip": {
+     "if_dip": 1.1,
+     "if_mcp": 1.1,
+     "if_pip": 1.1,
+     "if_rot": 0.0,
+     "mf_dip": 1.1,
+     "mf_mcp": 1.1,
+     "mf_pip": 1.1,
+     "mf_rot": 0.0,
+     "rf_dip": 1.1,
+     "rf_mcp": 1.1,
+     "rf_pip": 1.1,
+     "rf_rot": 0.0,
+     "th_axl": -0.349,
+     "th_cmc": 1.1,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    },
+    "open": {
+     "if_dip": 0.1,
+     "if_mcp": 0.1,
+     "if_pip": 0.1,
+     "if_rot": 0.0,
+     "mf_dip": 0.1,
+     "mf_mcp": 0.1,
+     "mf_pip": 0.1,
+     "mf_rot": 0.0,
+     "rf_dip": 0.1,
+     "rf_mcp": 0.1,
+     "rf_pip": 0.1,
+     "rf_rot": 0.0,
+     "th_axl": -0.1,
+     "th_cmc": 0.1,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    }
+   },
+   "right": {
+    "cup": {
+     "if_dip": 0.8,
+     "if_mcp": 0.8,
+     "if_pip": 0.8,
+     "if_rot": 0.0,
+     "mf_dip": 0.8,
+     "mf_mcp": 0.8,
+     "mf_pip": 0.8,
+     "mf_rot": 0.0,
+     "rf_dip": 0.8,
+     "rf_mcp": 0.8,
+     "rf_pip": 0.8,
+     "rf_rot": 0.0,
+     "th_axl": -0.349,
+     "th_cmc": 0.8,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    },
+    "grip": {
+     "if_dip": 1.1,
+     "if_mcp": 1.1,
+     "if_pip": 1.1,
+     "if_rot": 0.0,
+     "mf_dip": 1.1,
+     "mf_mcp": 1.1,
+     "mf_pip": 1.1,
+     "mf_rot": 0.0,
+     "rf_dip": 1.1,
+     "rf_mcp": 1.1,
+     "rf_pip": 1.1,
+     "rf_rot": 0.0,
+     "th_axl": -0.349,
+     "th_cmc": 1.1,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    },
+    "open": {
+     "if_dip": 0.1,
+     "if_mcp": 0.1,
+     "if_pip": 0.1,
+     "if_rot": 0.0,
+     "mf_dip": 0.1,
+     "mf_mcp": 0.1,
+     "mf_pip": 0.1,
+     "mf_rot": 0.0,
+     "rf_dip": 0.1,
+     "rf_mcp": 0.1,
+     "rf_pip": 0.1,
+     "rf_rot": 0.0,
+     "th_axl": -0.1,
+     "th_cmc": 0.1,
+     "th_ipl": 0.0,
+     "th_mcp": 0.0
+    }
+   }
+  },
+  "sides": {
+   "left": {
+    "basin": [
+     11,
+     195
+    ],
+    "cup_amp": 0.8,
+    "grip_amp": 1.1,
+    "model_side": "right",
+    "verify_drift_m": 0.0012193556176498532
+   },
+   "right": {
+    "basin": [
+     11,
+     195
+    ],
+    "cup_amp": 0.8,
+    "grip_amp": 1.1,
+    "model_side": "right",
+    "verify_drift_m": 0.0012193556176498532
+   }
+  }
+ },
+ "shadow": {
+  "cup_rel_palm": {
+   "left": [
+    0.07279461622238159,
+    0.011257081292569637,
+    0.02584850788116455
+   ],
+   "right": [
+    0.07349257171154022,
+    -0.011431744322180748,
+    0.026334822177886963
+   ]
+  },
+  "hand_y": 0.131,
+  "poses": {
+   "left": {
+    "cup": {
+     "lh_FFJ0": 1.0,
+     "lh_FFJ1": 0.5,
+     "lh_FFJ2": 0.5,
+     "lh_FFJ3": 0.5,
+     "lh_FFJ4": 0.0,
+     "lh_LFJ0": 1.0,
+     "lh_LFJ1": 0.5,
+     "lh_LFJ2": 0.5,
+     "lh_LFJ3": 0.5,
+     "lh_LFJ4": 0.0,
+     "lh_LFJ5": 0.5,
+     "lh_MFJ0": 1.0,
+     "lh_MFJ1": 0.5,
+     "lh_MFJ2": 0.5,
+     "lh_MFJ3": 0.5,
+     "lh_MFJ4": 0.0,
+     "lh_RFJ0": 1.0,
+     "lh_RFJ1": 0.5,
+     "lh_RFJ2": 0.5,
+     "lh_RFJ3": 0.5,
+     "lh_RFJ4": 0.0,
+     "lh_THJ1": 0.0,
+     "lh_THJ2": 0.0,
+     "lh_THJ3": 0.20944,
+     "lh_THJ4": 0.5,
+     "lh_THJ5": 0.5
+    },
+    "grip": {
+     "lh_FFJ0": 1.0,
+     "lh_FFJ1": 0.5,
+     "lh_FFJ2": 0.5,
+     "lh_FFJ3": 0.5,
+     "lh_FFJ4": 0.0,
+     "lh_LFJ0": 1.0,
+     "lh_LFJ1": 0.5,
+     "lh_LFJ2": 0.5,
+     "lh_LFJ3": 0.5,
+     "lh_LFJ4": 0.0,
+     "lh_LFJ5": 0.5,
+     "lh_MFJ0": 1.0,
+     "lh_MFJ1": 0.5,
+     "lh_MFJ2": 0.5,
+     "lh_MFJ3": 0.5,
+     "lh_MFJ4": 0.0,
+     "lh_RFJ0": 1.0,
+     "lh_RFJ1": 0.5,
+     "lh_RFJ2": 0.5,
+     "lh_RFJ3": 0.5,
+     "lh_RFJ4": 0.0,
+     "lh_THJ1": 0.0,
+     "lh_THJ2": 0.0,
+     "lh_THJ3": 0.20944,
+     "lh_THJ4": 0.5,
+     "lh_THJ5": 0.5
+    },
+    "open": {
+     "lh_FFJ0": 0.2,
+     "lh_FFJ1": 0.1,
+     "lh_FFJ2": 0.1,
+     "lh_FFJ3": 0.1,
+     "lh_FFJ4": 0.0,
+     "lh_LFJ0": 0.2,
+     "lh_LFJ1": 0.1,
+     "lh_LFJ2": 0.1,
+     "lh_LFJ3": 0.1,
+     "lh_LFJ4": 0.0,
+     "lh_LFJ5": 0.1,
+     "lh_MFJ0": 0.2,
+     "lh_MFJ1": 0.1,
+     "lh_MFJ2": 0.1,
+     "lh_MFJ3": 0.1,
+     "lh_MFJ4": 0.0,
+     "lh_RFJ0": 0.2,
+     "lh_RFJ1": 0.1,
+     "lh_RFJ2": 0.1,
+     "lh_RFJ3": 0.1,
+     "lh_RFJ4": 0.0,
+     "lh_THJ1": 0.0,
+     "lh_THJ2": 0.0,
+     "lh_THJ3": 0.1,
+     "lh_THJ4": 0.1,
+     "lh_THJ5": 0.1
+    }
+   },
+   "right": {
+    "cup": {
+     "rh_FFJ0": 1.0,
+     "rh_FFJ1": 0.5,
+     "rh_FFJ2": 0.5,
+     "rh_FFJ3": 0.5,
+     "rh_FFJ4": 0.0,
+     "rh_LFJ0": 1.0,
+     "rh_LFJ1": 0.5,
+     "rh_LFJ2": 0.5,
+     "rh_LFJ3": 0.5,
+     "rh_LFJ4": 0.0,
+     "rh_LFJ5": 0.5,
+     "rh_MFJ0": 1.0,
+     "rh_MFJ1": 0.5,
+     "rh_MFJ2": 0.5,
+     "rh_MFJ3": 0.5,
+     "rh_MFJ4": 0.0,
+     "rh_RFJ0": 1.0,
+     "rh_RFJ1": 0.5,
+     "rh_RFJ2": 0.5,
+     "rh_RFJ3": 0.5,
+     "rh_RFJ4": 0.0,
+     "rh_THJ1": 0.0,
+     "rh_THJ2": 0.0,
+     "rh_THJ3": 0.20944,
+     "rh_THJ4": 0.5,
+     "rh_THJ5": 0.5
+    },
+    "grip": {
+     "rh_FFJ0": 1.0,
+     "rh_FFJ1": 0.5,
+     "rh_FFJ2": 0.5,
+     "rh_FFJ3": 0.5,
+     "rh_FFJ4": 0.0,
+     "rh_LFJ0": 1.0,
+     "rh_LFJ1": 0.5,
+     "rh_LFJ2": 0.5,
+     "rh_LFJ3": 0.5,
+     "rh_LFJ4": 0.0,
+     "rh_LFJ5": 0.5,
+     "rh_MFJ0": 1.0,
+     "rh_MFJ1": 0.5,
+     "rh_MFJ2": 0.5,
+     "rh_MFJ3": 0.5,
+     "rh_MFJ4": 0.0,
+     "rh_RFJ0": 1.0,
+     "rh_RFJ1": 0.5,
+     "rh_RFJ2": 0.5,
+     "rh_RFJ3": 0.5,
+     "rh_RFJ4": 0.0,
+     "rh_THJ1": 0.0,
+     "rh_THJ2": 0.0,
+     "rh_THJ3": 0.20944,
+     "rh_THJ4": 0.5,
+     "rh_THJ5": 0.5
+    },
+    "open": {
+     "rh_FFJ0": 0.2,
+     "rh_FFJ1": 0.1,
+     "rh_FFJ2": 0.1,
+     "rh_FFJ3": 0.1,
+     "rh_FFJ4": 0.0,
+     "rh_LFJ0": 0.2,
+     "rh_LFJ1": 0.1,
+     "rh_LFJ2": 0.1,
+     "rh_LFJ3": 0.1,
+     "rh_LFJ4": 0.0,
+     "rh_LFJ5": 0.1,
+     "rh_MFJ0": 0.2,
+     "rh_MFJ1": 0.1,
+     "rh_MFJ2": 0.1,
+     "rh_MFJ3": 0.1,
+     "rh_MFJ4": 0.0,
+     "rh_RFJ0": 0.2,
+     "rh_RFJ1": 0.1,
+     "rh_RFJ2": 0.1,
+     "rh_RFJ3": 0.1,
+     "rh_RFJ4": 0.0,
+     "rh_THJ1": 0.0,
+     "rh_THJ2": 0.0,
+     "rh_THJ3": 0.1,
+     "rh_THJ4": 0.1,
+     "rh_THJ5": 0.1
+    }
+   }
+  },
+  "sides": {
+   "left": {
+    "basin": [
+     13,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "left",
+    "verify_drift_m": 0.0031841127201914787
+   },
+   "right": {
+    "basin": [
+     12,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "right",
+    "verify_drift_m": 0.0030763440299779177
+   }
+  }
+ },
+ "sharpa": {
+  "cup_rel_palm": {
+   "left": [
+    0.09851785749197006,
+    0.0076072849333286285,
+    0.045876502990722656
+   ],
+   "right": [
+    0.09850873053073883,
+    -0.007488609757274389,
+    0.045885324478149414
+   ]
+  },
+  "hand_y": 0.131,
+  "poses": {
+   "left": {
+    "cup": {
+     "left_index_DIP": 0.5,
+     "left_index_MCP_AA": 0.0,
+     "left_index_MCP_FE": 0.5,
+     "left_index_PIP": 0.5,
+     "left_middle_DIP": 0.5,
+     "left_middle_MCP_AA": 0.0,
+     "left_middle_MCP_FE": 0.5,
+     "left_middle_PIP": 0.5,
+     "left_pinky_CMC": 0.2618,
+     "left_pinky_DIP": 0.5,
+     "left_pinky_MCP_AA": 0.0,
+     "left_pinky_MCP_FE": 0.5,
+     "left_pinky_PIP": 0.5,
+     "left_ring_DIP": 0.5,
+     "left_ring_MCP_AA": 0.0,
+     "left_ring_MCP_FE": 0.5,
+     "left_ring_PIP": 0.5,
+     "left_thumb_CMC_AA": 0.0,
+     "left_thumb_CMC_FE": 0.5,
+     "left_thumb_IP": 0.5,
+     "left_thumb_MCP_AA": -0.3491,
+     "left_thumb_MCP_FE": 0.5
+    },
+    "grip": {
+     "left_index_DIP": 0.5,
+     "left_index_MCP_AA": 0.0,
+     "left_index_MCP_FE": 0.5,
+     "left_index_PIP": 0.5,
+     "left_middle_DIP": 0.5,
+     "left_middle_MCP_AA": 0.0,
+     "left_middle_MCP_FE": 0.5,
+     "left_middle_PIP": 0.5,
+     "left_pinky_CMC": 0.2618,
+     "left_pinky_DIP": 0.5,
+     "left_pinky_MCP_AA": 0.0,
+     "left_pinky_MCP_FE": 0.5,
+     "left_pinky_PIP": 0.5,
+     "left_ring_DIP": 0.5,
+     "left_ring_MCP_AA": 0.0,
+     "left_ring_MCP_FE": 0.5,
+     "left_ring_PIP": 0.5,
+     "left_thumb_CMC_AA": 0.0,
+     "left_thumb_CMC_FE": 0.5,
+     "left_thumb_IP": 0.5,
+     "left_thumb_MCP_AA": -0.3491,
+     "left_thumb_MCP_FE": 0.5
+    },
+    "open": {
+     "left_index_DIP": 0.1,
+     "left_index_MCP_AA": 0.0,
+     "left_index_MCP_FE": 0.1,
+     "left_index_PIP": 0.1,
+     "left_middle_DIP": 0.1,
+     "left_middle_MCP_AA": 0.0,
+     "left_middle_MCP_FE": 0.1,
+     "left_middle_PIP": 0.1,
+     "left_pinky_CMC": 0.1,
+     "left_pinky_DIP": 0.1,
+     "left_pinky_MCP_AA": 0.0,
+     "left_pinky_MCP_FE": 0.1,
+     "left_pinky_PIP": 0.1,
+     "left_ring_DIP": 0.1,
+     "left_ring_MCP_AA": 0.0,
+     "left_ring_MCP_FE": 0.1,
+     "left_ring_PIP": 0.1,
+     "left_thumb_CMC_AA": 0.0,
+     "left_thumb_CMC_FE": 0.1,
+     "left_thumb_IP": 0.1,
+     "left_thumb_MCP_AA": -0.1,
+     "left_thumb_MCP_FE": 0.1
+    }
+   },
+   "right": {
+    "cup": {
+     "right_index_DIP": 0.5,
+     "right_index_MCP_AA": 0.0,
+     "right_index_MCP_FE": 0.5,
+     "right_index_PIP": 0.5,
+     "right_middle_DIP": 0.5,
+     "right_middle_MCP_AA": 0.0,
+     "right_middle_MCP_FE": 0.5,
+     "right_middle_PIP": 0.5,
+     "right_pinky_CMC": 0.2618,
+     "right_pinky_DIP": 0.5,
+     "right_pinky_MCP_AA": 0.0,
+     "right_pinky_MCP_FE": 0.5,
+     "right_pinky_PIP": 0.5,
+     "right_ring_DIP": 0.5,
+     "right_ring_MCP_AA": 0.0,
+     "right_ring_MCP_FE": 0.5,
+     "right_ring_PIP": 0.5,
+     "right_thumb_CMC_AA": 0.0,
+     "right_thumb_CMC_FE": 0.5,
+     "right_thumb_IP": 0.5,
+     "right_thumb_MCP_AA": -0.3491,
+     "right_thumb_MCP_FE": 0.5
+    },
+    "grip": {
+     "right_index_DIP": 0.5,
+     "right_index_MCP_AA": 0.0,
+     "right_index_MCP_FE": 0.5,
+     "right_index_PIP": 0.5,
+     "right_middle_DIP": 0.5,
+     "right_middle_MCP_AA": 0.0,
+     "right_middle_MCP_FE": 0.5,
+     "right_middle_PIP": 0.5,
+     "right_pinky_CMC": 0.2618,
+     "right_pinky_DIP": 0.5,
+     "right_pinky_MCP_AA": 0.0,
+     "right_pinky_MCP_FE": 0.5,
+     "right_pinky_PIP": 0.5,
+     "right_ring_DIP": 0.5,
+     "right_ring_MCP_AA": 0.0,
+     "right_ring_MCP_FE": 0.5,
+     "right_ring_PIP": 0.5,
+     "right_thumb_CMC_AA": 0.0,
+     "right_thumb_CMC_FE": 0.5,
+     "right_thumb_IP": 0.5,
+     "right_thumb_MCP_AA": -0.3491,
+     "right_thumb_MCP_FE": 0.5
+    },
+    "open": {
+     "right_index_DIP": 0.1,
+     "right_index_MCP_AA": 0.0,
+     "right_index_MCP_FE": 0.1,
+     "right_index_PIP": 0.1,
+     "right_middle_DIP": 0.1,
+     "right_middle_MCP_AA": 0.0,
+     "right_middle_MCP_FE": 0.1,
+     "right_middle_PIP": 0.1,
+     "right_pinky_CMC": 0.1,
+     "right_pinky_DIP": 0.1,
+     "right_pinky_MCP_AA": 0.0,
+     "right_pinky_MCP_FE": 0.1,
+     "right_pinky_PIP": 0.1,
+     "right_ring_DIP": 0.1,
+     "right_ring_MCP_AA": 0.0,
+     "right_ring_MCP_FE": 0.1,
+     "right_ring_PIP": 0.1,
+     "right_thumb_CMC_AA": 0.0,
+     "right_thumb_CMC_FE": 0.1,
+     "right_thumb_IP": 0.1,
+     "right_thumb_MCP_AA": -0.1,
+     "right_thumb_MCP_FE": 0.1
+    }
+   }
+  },
+  "sides": {
+   "left": {
+    "basin": [
+     12,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "left",
+    "verify_drift_m": 0.0006647066911682487
+   },
+   "right": {
+    "basin": [
+     12,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "right",
+    "verify_drift_m": 0.0006564208888448775
+   }
+  }
+ },
+ "wuji": {
+  "cup_rel_palm": {
+   "left": [
+    0.09425266087055206,
+    -0.01600964367389679,
+    0.036438941955566406
+   ],
+   "right": [
+    0.09425266087055206,
+    -0.01600964367389679,
+    0.036438941955566406
+   ]
+  },
+  "hand_y": 0.131,
+  "poses": {
+   "left": {
+    "cup": {
+     "right_finger1_joint1": 0.5,
+     "right_finger1_joint2": -0.1387,
+     "right_finger1_joint3": 0.5,
+     "right_finger1_joint4": 0.5,
+     "right_finger2_joint1": 0.5,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.5,
+     "right_finger2_joint4": 0.5,
+     "right_finger3_joint1": 0.5,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.5,
+     "right_finger3_joint4": 0.5,
+     "right_finger4_joint1": 0.5,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.5,
+     "right_finger4_joint4": 0.5,
+     "right_finger5_joint1": 0.5,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.5,
+     "right_finger5_joint4": 0.5
+    },
+    "grip": {
+     "right_finger1_joint1": 0.5,
+     "right_finger1_joint2": -0.1387,
+     "right_finger1_joint3": 0.5,
+     "right_finger1_joint4": 0.5,
+     "right_finger2_joint1": 0.5,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.5,
+     "right_finger2_joint4": 0.5,
+     "right_finger3_joint1": 0.5,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.5,
+     "right_finger3_joint4": 0.5,
+     "right_finger4_joint1": 0.5,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.5,
+     "right_finger4_joint4": 0.5,
+     "right_finger5_joint1": 0.5,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.5,
+     "right_finger5_joint4": 0.5
+    },
+    "open": {
+     "right_finger1_joint1": 0.1,
+     "right_finger1_joint2": -0.1,
+     "right_finger1_joint3": 0.1,
+     "right_finger1_joint4": 0.1,
+     "right_finger2_joint1": 0.1,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.1,
+     "right_finger2_joint4": 0.1,
+     "right_finger3_joint1": 0.1,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.1,
+     "right_finger3_joint4": 0.1,
+     "right_finger4_joint1": 0.1,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.1,
+     "right_finger4_joint4": 0.1,
+     "right_finger5_joint1": 0.1,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.1,
+     "right_finger5_joint4": 0.1
+    }
+   },
+   "right": {
+    "cup": {
+     "right_finger1_joint1": 0.5,
+     "right_finger1_joint2": -0.1387,
+     "right_finger1_joint3": 0.5,
+     "right_finger1_joint4": 0.5,
+     "right_finger2_joint1": 0.5,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.5,
+     "right_finger2_joint4": 0.5,
+     "right_finger3_joint1": 0.5,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.5,
+     "right_finger3_joint4": 0.5,
+     "right_finger4_joint1": 0.5,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.5,
+     "right_finger4_joint4": 0.5,
+     "right_finger5_joint1": 0.5,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.5,
+     "right_finger5_joint4": 0.5
+    },
+    "grip": {
+     "right_finger1_joint1": 0.5,
+     "right_finger1_joint2": -0.1387,
+     "right_finger1_joint3": 0.5,
+     "right_finger1_joint4": 0.5,
+     "right_finger2_joint1": 0.5,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.5,
+     "right_finger2_joint4": 0.5,
+     "right_finger3_joint1": 0.5,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.5,
+     "right_finger3_joint4": 0.5,
+     "right_finger4_joint1": 0.5,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.5,
+     "right_finger4_joint4": 0.5,
+     "right_finger5_joint1": 0.5,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.5,
+     "right_finger5_joint4": 0.5
+    },
+    "open": {
+     "right_finger1_joint1": 0.1,
+     "right_finger1_joint2": -0.1,
+     "right_finger1_joint3": 0.1,
+     "right_finger1_joint4": 0.1,
+     "right_finger2_joint1": 0.1,
+     "right_finger2_joint2": 0.0,
+     "right_finger2_joint3": 0.1,
+     "right_finger2_joint4": 0.1,
+     "right_finger3_joint1": 0.1,
+     "right_finger3_joint2": 0.0,
+     "right_finger3_joint3": 0.1,
+     "right_finger3_joint4": 0.1,
+     "right_finger4_joint1": 0.1,
+     "right_finger4_joint2": 0.0,
+     "right_finger4_joint3": 0.1,
+     "right_finger4_joint4": 0.1,
+     "right_finger5_joint1": 0.1,
+     "right_finger5_joint2": 0.0,
+     "right_finger5_joint3": 0.1,
+     "right_finger5_joint4": 0.1
+    }
+   }
+  },
+  "sides": {
+   "left": {
+    "basin": [
+     7,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "right",
+    "verify_drift_m": 0.00461056362837553
+   },
+   "right": {
+    "basin": [
+     7,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.5,
+    "model_side": "right",
+    "verify_drift_m": 0.00461056362837553
+   }
+  }
+ },
+ "xhand": {
+  "cup_rel_palm": {
+   "left": [
+    0.09689664095640182,
+    0.01761997491121292,
+    0.05022686719894409
+   ],
+   "right": [
+    0.09689664095640182,
+    0.01761997491121292,
+    0.05022686719894409
+   ]
+  },
+  "hand_y": 0.131,
+  "poses": {
+   "left": {
+    "cup": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.5,
+     "left_hand_index_joint2": 0.5,
+     "left_hand_mid_joint1": 0.5,
+     "left_hand_mid_joint2": 0.5,
+     "left_hand_pinky_joint1": 0.5,
+     "left_hand_pinky_joint2": 0.5,
+     "left_hand_ring_joint1": 0.5,
+     "left_hand_ring_joint2": 0.5,
+     "left_hand_thumb_bend_joint": 0.6,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    },
+    "grip": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.8,
+     "left_hand_index_joint2": 0.8,
+     "left_hand_mid_joint1": 0.8,
+     "left_hand_mid_joint2": 0.8,
+     "left_hand_pinky_joint1": 0.8,
+     "left_hand_pinky_joint2": 0.8,
+     "left_hand_ring_joint1": 0.8,
+     "left_hand_ring_joint2": 0.8,
+     "left_hand_thumb_bend_joint": 0.8,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    },
+    "open": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.1,
+     "left_hand_index_joint2": 0.1,
+     "left_hand_mid_joint1": 0.1,
+     "left_hand_mid_joint2": 0.1,
+     "left_hand_pinky_joint1": 0.1,
+     "left_hand_pinky_joint2": 0.1,
+     "left_hand_ring_joint1": 0.1,
+     "left_hand_ring_joint2": 0.1,
+     "left_hand_thumb_bend_joint": 0.6,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    }
+   },
+   "right": {
+    "cup": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.5,
+     "left_hand_index_joint2": 0.5,
+     "left_hand_mid_joint1": 0.5,
+     "left_hand_mid_joint2": 0.5,
+     "left_hand_pinky_joint1": 0.5,
+     "left_hand_pinky_joint2": 0.5,
+     "left_hand_ring_joint1": 0.5,
+     "left_hand_ring_joint2": 0.5,
+     "left_hand_thumb_bend_joint": 0.6,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    },
+    "grip": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.8,
+     "left_hand_index_joint2": 0.8,
+     "left_hand_mid_joint1": 0.8,
+     "left_hand_mid_joint2": 0.8,
+     "left_hand_pinky_joint1": 0.8,
+     "left_hand_pinky_joint2": 0.8,
+     "left_hand_ring_joint1": 0.8,
+     "left_hand_ring_joint2": 0.8,
+     "left_hand_thumb_bend_joint": 0.8,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    },
+    "open": {
+     "left_hand_index_bend_joint": 0.0,
+     "left_hand_index_joint1": 0.1,
+     "left_hand_index_joint2": 0.1,
+     "left_hand_mid_joint1": 0.1,
+     "left_hand_mid_joint2": 0.1,
+     "left_hand_pinky_joint1": 0.1,
+     "left_hand_pinky_joint2": 0.1,
+     "left_hand_ring_joint1": 0.1,
+     "left_hand_ring_joint2": 0.1,
+     "left_hand_thumb_bend_joint": 0.6,
+     "left_hand_thumb_rota_joint1": 0.0,
+     "left_hand_thumb_rota_joint2": 0.0
+    }
+   }
+  },
+  "sides": {
+   "left": {
+    "basin": [
+     9,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.8,
+    "model_side": "left",
+    "verify_drift_m": 0.00028608960565179586
+   },
+   "right": {
+    "basin": [
+     9,
+     195
+    ],
+    "cup_amp": 0.5,
+    "grip_amp": 0.8,
+    "model_side": "left",
+    "verify_drift_m": 0.00028608960565179586
+   }
+  }
+ }
+}
