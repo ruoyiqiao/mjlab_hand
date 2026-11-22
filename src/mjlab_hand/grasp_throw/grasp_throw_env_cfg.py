@@ -4,7 +4,7 @@ DexPBT reference: ``allegro_kuka_throw.py`` (+ base). Same reward as the base ta
 (single center keypoint, goal = bucket + 0.05 z, no tolerance curriculum, success
 steps 5, no random forces, episode 300 steps = 5 s per goal in IsaacGymEnvs).
 
-Deviations (see docs/allegro_four_tasks/reward_mapping.md):
+Deviations from DexPBT:
 * bucket within an arm-free throwing range (outside the hand's reach);
 * success needs the full chain grasp -> lift -> release -> valid flight -> settled
   inside the bucket (DexPBT counts keypoint proximity only);

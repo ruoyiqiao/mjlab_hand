@@ -102,13 +102,13 @@ class CascadeSpec:
     ball_solref: tuple[float, float] = (
         0.02,
         1.5,
-    )  # soft, little rebound (drop test in juggling_plan.md)
+    )  # soft, little rebound
     anchor_z: float = 0.60
     # Designed prior.
     kappa: float = 0.5  # cushioned catch (deviation, see module docstring)
     # Finger schedule of the prior: hold pose during the dwell, release pose from release_lead_s before the release
     # for release_hold_s, then back to the hold pose (the next ball is caught into the formed grip).
-    hold_pose: str = "grip"  # keeps the ball centred (1.4 vs 3-4 cm in a cup); see juggling_plan.md
+    hold_pose: str = "grip"  # keeps the ball centred (1.4 vs 3-4 cm in a cup)
     release_pose: str = (
         "open"  # opening 0.03 s before release cuts the landing error 0.20 -> 0.08 m
     )

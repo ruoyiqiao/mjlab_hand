@@ -1,14 +1,14 @@
-"""Juggle2-OneHand-Allegro / Juggle1-OneHand-Allegro environment configs.
+"""Juggle1 / Juggle2 environment configs: one floating palm-up hand, one or two balls.
 
-One floating palm-up Allegro (genuine left MJCF, anchor rotation identity ->
-palm normal +z, fingers +x; base_x -> world +z, base_y -> world -y,
-base_z -> world +x), two free low-restitution balls, no table, floor plane.
-Physics 0.005 s, decimation 2 -> 100 Hz control (0.3 s throw period).
+The frame notes use Allegro; other hands take theirs from the hand profile. One floating
+palm-up Allegro (genuine left MJCF, anchor rotation identity -> palm normal +z, fingers +x;
+base_x -> world +z, base_y -> world -y, base_z -> world +x), free low-restitution balls,
+no table, floor plane. Physics 0.005 s, decimation 2 -> 100 Hz control.
 
-Deviations from Ploeger et al. 2020 (recorded in juggling_plan.md): Allegro hand
-with a finger cup instead of a WAM funnel; 5 cm balls (75 mm in the paper);
-drop line relative to the cup height (paper: 0.6 m above the floor); task-local
-stiffer base slides (kp 2000 / kv 90 vs 300 / 40) to track a 0.3 s cycle.
+Deviations from Ploeger et al. 2020: a hand with a finger cup instead of a WAM funnel;
+5 cm balls (75 mm in the paper); drop line relative to the cup height (paper: 0.6 m above
+the floor); stiffer base slides (the registered tasks use kp 5000 / kv 140) to track the
+throw cycle.
 """
 
 from __future__ import annotations

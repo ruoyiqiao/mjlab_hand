@@ -13,5 +13,5 @@ Grasp-Throw, Object-Reorientation, DualHand-Reorientation and Regrasp share:
 
 Reference: IsaacGymEnvs allegro_kuka tasks, revision
 aeed298638a1f7b5421b38f5f3cc2d1079b6d9c3 (BSD-3-Clause, NVIDIA). Formulas are
-re-implemented, not copied; see docs/allegro_four_tasks/reward_mapping.md.
+re-implemented, not copied.
 """

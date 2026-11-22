@@ -7,7 +7,7 @@ from mjlab_hand.tasks_common.rl import make_ppo_cfg
 
 _PPO = "allegro_dual_hand_reorientation_dexpbt"
 
-# Original layout (regular PPO preset). Hand-hand collision cannot be removed here (see reward_mapping.md).
+# Original layout (regular PPO preset); the hands can collide in this layout.
 register_mjlab_task(
     task_id="DualHand-Reorientation-Allegro",
     env_cfg=make_dual_hand_env_cfg(),
@@ -36,7 +36,7 @@ register_mjlab_task(
 )
 
 # Direct handover with the mjlab-tracking-style root action (absolute target, slew-limited, G1-recipe PD, action-rate
-# penalty). Earlier id: FarTrackSlew. From scratch; 2 of 6 seeds pass (docs/allegro_four_tasks/action_space.md).
+# penalty).
 register_mjlab_task(
     task_id="DualHand-Reorientation-Allegro-TrackSlew",
     env_cfg=make_dual_hand_env_cfg(layout="far", handoff_shaping=True, track=True),
