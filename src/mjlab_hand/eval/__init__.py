@@ -1,8 +1,4 @@
-"""Task-agnostic evaluation framework for mjlab_hand.
-
-See `README.md` in this directory for the full guide (configs, metrics,
-adding a new task, regression workflow).
-"""
+"""Task-agnostic evaluation framework for mjlab_hand (configs in configs/eval, entry point cli/eval.py)."""
 
 from mjlab_hand.eval.base import (
     TaskEvaluator,

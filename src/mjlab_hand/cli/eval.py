@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Evaluate a single trained policy on a grasp or in-hand-rotation task."""
+"""Evaluate a trained policy: grasping, in-hand rotation, throwing, reorientation, regrasping or handover."""
 
 from __future__ import annotations
 

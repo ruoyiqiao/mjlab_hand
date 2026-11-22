@@ -107,7 +107,7 @@ class SingleHandTaskSpec:
     geometric (episodes end at the first timed-out goal), so 3 = 75 % per goal and 1 = 50 %. The non-Allegro reorientation runs parked at
     ~1 (LEAP s42: tolerance 1.33, never trained at the final tolerance, held-out 2 %), so they use 1.0; Allegro keeps 3."""
     grasp_contact_weight: float = GRASP_CONTACT_WEIGHT
-    """Per-step pre-lift opposition-grasp shaping (deviation, reward_mapping.md); 0 removes it."""
+    """Per-step pre-lift opposition-grasp shaping (a deviation from DexPBT); 0 removes it."""
     finger_action_rate: float = 0.0
     """Weight (<= 0) of the finger action-rate penalty (sum |a_t - a_{t-1}|^2 over the finger dims); 0 disables."""
     finger_action_acc: float = 0.0
@@ -222,7 +222,7 @@ def dexpbt_rewards(
         "lift_bonus": RewardTermCfg(
             func=tmdp.lift_bonus, weight=DEXPBT["liftingBonus"] * s, params={"command_name": cmd}
         ),
-        # Deviation (see reward_mapping.md): small pre-lift opposition-grasp shaping.
+        # Deviation from DexPBT: small pre-lift opposition-grasp shaping.
         "grasp_contact": RewardTermCfg(
             func=tmdp.grasp_contact, weight=grasp_contact_weight, params={"command_name": cmd}
         ),

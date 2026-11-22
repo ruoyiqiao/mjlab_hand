@@ -32,9 +32,8 @@ def make_regrasp_spec(hand: str = "allegro") -> SingleHandTaskSpec:
         pos_tolerance=0.03,
         tolerance_scale_init=2.5,
         hold_time_s=0.5,
-        # Sharpa (2026-11-17): swats the cube off the table (episodes ~42 steps, cube ~1.8 m from the goal, lift bonus always paid, 0 grasp
-        # reward). Same fix as Grasp-Throw: lifting counts only while thumb + >= 1 fingertip hold the object. LEAP / Wuji regrasp already
-        # reach 95.7-96.4 % without it, so the gate is limited to the hands that need it.
+        # Sharpa, XHand and Shadow learn to swat the cube off the table: as in Grasp-Throw, lifting counts only while the
+        # thumb + >= 1 fingertip hold the object. The other hands learn without the gate.
         lift_requires_grasp=hand in ("sharpa", "xhand", "shadow"),
         hold_requires_grasp=hand == "xhand",
     )
@@ -43,8 +42,7 @@ def make_regrasp_spec(hand: str = "allegro") -> SingleHandTaskSpec:
         command=cmd,
         workspace=single_hand_workspace(hand=hand),
         hand=hand,
-        # Shadow and XHand farmed the per-step grasp shaping (held the cube, never lifted: Shadow lifted 0.00 after 3000 it, XHand 0.01 after
-        # 2000 it); without it Shadow regrasp lifts within 1000 it and passes (96.3 / 96.4 %).
+        # Shadow and XHand farm the per-step grasp shaping (they hold the cube and never lift it), so it is off for them.
         grasp_contact_weight=0.0 if hand in ("shadow", "xhand") else 0.005,
         timing=TaskTiming(episode_s=30.0, per_goal_s=8.0, max_successes=50),
         table=TABLE,

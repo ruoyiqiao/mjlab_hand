@@ -1,4 +1,4 @@
-"""Verify the left/right floating Allegro models (handoff §5 hand checks).
+"""Verify the left/right floating Allegro models.
 
 Checks, writing a JSON report:
 * identical joint / actuator name order and joint ranges for both sides;

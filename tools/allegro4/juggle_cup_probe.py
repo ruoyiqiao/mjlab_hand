@@ -1,7 +1,7 @@
 """Juggling cup pose and cup point of a palm-up floating hand (CPU), written to hand_params/juggle.json.
 
 Usage: python juggle_cup_probe.py [--hands leap,wuji,sharpa,xhand,shadow] [--amp 0.5] [--render DIR] [--write]
-Amplitude rule: the smallest of {0.5, 0.8} rad whose well has a basin >= 5 drop points and passes the hold check (2026-11-17: 0.5 for wuji, sharpa, xhand, shadow; 0.8 for leap, basin 1 at 0.5).
+Amplitude rule: the smallest of {0.5, 0.8} rad whose well has a basin >= 5 drop points and passes the hold check (0.5 for Wuji, Sharpa, XHand and Shadow; 0.8 for LEAP).
 
 Allegro's Juggle1/2 hold the fingers in a fixed "cup" (juggle_env_cfg.CUP_POSE: flexion 0.35 / 0.7 / 0.6 rad, thumb
 opposed) and place ball A on the palm_collision box face. Other hands have no such box, so both are measured in the

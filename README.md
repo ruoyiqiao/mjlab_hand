@@ -13,7 +13,7 @@ Dexterous manipulation tasks based on [mjlab](https://github.com/mujocolab/mjlab
 
 ## Tasks
 
-Most task ids name the hand, e.g. `Grasp-{Hand}`, where `{Hand}` is one of `Shadow`, `Allegro`, `LEAP`, `Sharpa`, `Wuji`, or `XHand` (`Sharpa-Right` for grasping and in-hand rotation); `uv run list-envs` prints every id. The clips show one hand per task.
+Most task ids name the hand, e.g. `Grasp-{Hand}`, where `{Hand}` is one of `Shadow`, `Allegro`, `LEAP`, `Sharpa`, `Wuji`, or `XHand`. Grasping and in-hand rotation also have `Sharpa-Right` (`Sharpa` is the left hand), and the two-hand handover is registered for Allegro only. `uv run list-envs` prints every id; the clips show one hand per task.
 
 ### Manipulation
 
@@ -62,6 +62,8 @@ cd mjlab_hand
 uv sync --locked
 ```
 
+Training runs on an NVIDIA GPU with CUDA.
+
 ## Quick Start
 
 List the registered tasks, optionally filtered by a keyword:
@@ -80,6 +82,8 @@ uv run train Juggle3-LEAP-Cascade-Residual --env.scene.num-envs 2048
 uv run train PlateSpin-Shadow --env.scene.num-envs 2048
 ```
 
+Checkpoints are written to `logs/rsl_rl/<experiment>/<date>_<run>/model_<iteration>.pt`.
+
 Useful flags: `--agent.seed`, `--env.scene.num-envs` and `--agent.max-iterations`. For `Grasp-*` and
 `InHand-Rotation-*`, `--env.rewards.contact_explorer_reward.weight 0.0` disables the ContactExplorer rewards.
 
@@ -95,10 +99,10 @@ uv run train-object Grasp-Allegro --object hammer --env.scene.num-envs 2048
 uv run train-object InHand-Rotation-Allegro --object cylinder_medium --scale 0.8,0.8,0.8
 ```
 
-Objects are loaded from ContactDB. Examples: `cube`, `cylinder_medium`, `ps_controller`, `mug`, `flashlight`, `pan`.
+`--object` and `--scale` apply to `Grasp-*` and `InHand-Rotation-*`. Objects are loaded from ContactDB (`asset/contactdb/`). Examples: `cube_medium`, `cylinder_medium`, `ps_controller`, `mug`, `flashlight`, `pan`.
 
 > [!NOTE]
-> Not every object in this repository has been tested. Some objects may need additional tuning on mdp components and training hyperparameters, to learn successfully.
+> Not every object in this repository has been tested. Some objects may need additional tuning on mdp components and training hyperparameters to learn successfully.
 
 ## Evaluation & Playback
 
@@ -111,7 +115,7 @@ uv run play-object Grasp-Shadow --checkpoint-file /path/to/model.pt
 `play-object` wraps mjlab's `play` and works for every task; `--object` and `--scale` change the object of
 `Grasp-*` and `InHand-Rotation-*`.
 
-### Batch Evaluation
+### Evaluation
 
 `eval-policy` evaluates grasping, in-hand rotation, throwing, reorientation, regrasping and the two-hand handover:
 
@@ -146,7 +150,7 @@ uv run eval-policy --task InHand-Rotation-Allegro --wandb-run-path entity/projec
   [DexScrew](https://github.com/x-robotics-lab/dexscrew); Wuji from [Wuji Technology](https://github.com/wuji-technology/wuji-description).
 - Object meshes: [ContactDB](https://contactdb.cc.gatech.edu/).
 - Tasks: throwing, reorientation, regrasping and two-hand handover follow [DexPBT](https://arxiv.org/abs/2305.12127);
-  three-ball juggling follows the controller structure of [Lee et al.](https://arxiv.org/abs/2608.26800).
+  one- and two-ball juggling follow the setting of [Ploeger et al.](https://arxiv.org/abs/2010.13483); three-ball juggling follows the controller structure of [Lee et al.](https://arxiv.org/abs/2608.26800).
 
 We thank the authors for making their work available.
 
@@ -163,24 +167,31 @@ If you find this project useful, please consider citing it:
 }
 
 @article{liu2026contactexplorer,
-  title={Contact Coverage-Guided Exploration for General-Purpose Dexterous Manipulation},
+  title={{ContactExplorer}: Contact Coverage-Guided Exploration for General-Purpose Dexterous Manipulation},
   author={Liu, Zixuan and Qiao, Ruoyi and Tie, Chenrui and Liu, Xuanwei and Lou, Yunfan and Gao, Chongkai and Xu, Zhixuan and Shao, Lin},
   journal={arXiv preprint arXiv:2603.10971},
   year={2026}
 }
 
 @article{zakka2026mjlab,
-  title={mjlab: A Lightweight Framework for GPU-Accelerated Robot Learning},
-  author={Zakka, Kevin and Liao, Qiayuan and Yi, Brent and Lay, Louis Le and Sreenath, Koushil and Abbeel, Pieter},
+  title={{mjlab}: A Lightweight Framework for GPU-Accelerated Robot Learning},
+  author={Zakka, Kevin and Liao, Qiayuan and Yi, Brent and Le Lay, Louis and Sreenath, Koushil and Abbeel, Pieter},
   journal={arXiv preprint arXiv:2601.22074},
   year={2026}
 }
 
 @inproceedings{petrenko2023dexpbt,
-  title={DexPBT: Scaling up Dexterous Manipulation for Hand-Arm Systems with Population Based Training},
+  title={{DexPBT}: Scaling up Dexterous Manipulation for Hand-Arm Systems with Population Based Training},
   author={Petrenko, Aleksei and Allshire, Arthur and State, Gavriel and Handa, Ankur and Makoviychuk, Viktor},
   booktitle={Robotics: Science and Systems (RSS)},
   year={2023}
+}
+
+@inproceedings{ploeger2020juggling,
+  title={High Acceleration Reinforcement Learning for Real-World Juggling with Binary Rewards},
+  author={Ploeger, Kai and Lutter, Michael and Peters, Jan},
+  booktitle={Conference on Robot Learning (CoRL)},
+  year={2020}
 }
 
 @article{lee2026rapid,
@@ -199,5 +210,5 @@ If you find this project useful, please consider citing it:
 | Hand models (Allegro, LEAP, Shadow, Sharpa, XHand, Wuji) | BSD-2-Clause, MIT or Apache-2.0, per hand |
 | ContactDB object meshes (`asset/contactdb`) | ContactDB terms |
 
-Third-party components keep their upstream licenses; see [NOTICE](NOTICE) and the license file next to each
-component.
+Third-party components keep their upstream licenses; see [NOTICE](NOTICE) and the license file shipped with
+each hand model.

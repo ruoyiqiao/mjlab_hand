@@ -7,8 +7,7 @@ state that DexPBT keeps on the env (``allegro_kuka_base.py``):
   histories with the ``-1`` sentinel re-initialisation (B:764, 819, 1044, 1077);
 * ``lifted_object`` (sticky, B:788-812) using ``z_lift = 0.05 + z - z_init``;
 * ``near_goal`` (DexPBT: ``kp_max <= tol * keypointScale``) – here an explicit
-  position (+ angle) tolerance scaled by the tolerance curriculum, see
-  ``docs/allegro_four_tasks/reward_mapping.md``;
+  position (+ angle) tolerance scaled by the tolerance curriculum;
 * a **consecutive** hold timer (s) for success (deliberate deviation: DexPBT's
   ``near_goal_steps`` is cumulative; the cumulative count is kept as a metric);
 * ``successes`` counter (monotonic within an episode) and a per-goal timer

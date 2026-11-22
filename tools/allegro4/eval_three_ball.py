@@ -59,12 +59,7 @@ def main():
     from mjlab.envs import ManagerBasedRlEnv
     from mjlab.tasks.registry import load_env_cfg, load_rl_cfg
 
-    try:
-        from mjlab_hand.juggling.cascade import get_juggler
-    except (
-        ImportError
-    ):  # sources frozen with runs launched before the rename (rai_cascade / "rai" command)
-        from mjlab_hand.juggling.rai_cascade import get_rai as get_juggler
+    from mjlab_hand.juggling.cascade import get_juggler
 
     cfg = load_env_cfg(a.task, play=True)
     CMD = next(iter(cfg.commands))

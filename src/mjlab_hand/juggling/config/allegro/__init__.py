@@ -1,7 +1,7 @@
 """Juggling task registration (Allegro).
 
 Juggle1/2: one hand, one / two balls (Ploeger et al., CoRL 2020 setting), closed-loop PPO.
-Juggle3-Allegro-*: two hands, three balls, paper-style designed prior + RL residual (docs/allegro_four_tasks/juggling_plan.md).
+Juggle3-Allegro-*: two hands, three balls, designed throw-and-catch prior + RL residual (Lee et al.).
 
 One-hand pattern constants from first principles (Shannon): throw interval T, dwell D, vacant V = T - D, flight
 F = 2V + D, release speed v0 = g F / 2, apex g F^2 / 8. T = 0.40 s, D = 0.15 s -> F = 0.65 s, v0 = 3.19 m/s, apex 0.52 m.
@@ -27,7 +27,7 @@ def juggle_rl_spec(num_balls: int) -> JuggleSpec:
     hold limit, fixed finger cup (6-D base action, paper: rigid funnel), and a
     reference-state start consistent with the steady pattern: ball A at rest in the
     cup at column A, ball B on its steady parabola landing on column B after
-    tau ~ U(T - 0.03, T + 0.10) at speed v0. Deviations: juggling_plan.md."""
+    tau ~ U(T - 0.03, T + 0.10) at speed v0."""
     return JuggleSpec(
         num_balls=num_balls,
         column_offset=(0.0, COL, 0.0),

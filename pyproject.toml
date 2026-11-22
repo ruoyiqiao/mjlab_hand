@@ -17,7 +17,6 @@ dependencies = [
 ]
 
 [project.scripts]
-mjlab-hand = "mjlab_hand:main"
 train-object = "mjlab_hand.cli.train_object:main"
 play-object = "mjlab_hand.cli.play_object:main"
 eval-policy = "mjlab_hand.cli.eval:main"
