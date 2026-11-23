@@ -1,12 +1,12 @@
 [project]
 name = "mjlab-hand"
-version = "0.1.0"
+version = "0.2.0"
 description = "Dexterous hand tasks in mjlab: grasping, in-hand rotation, throwing, reorientation, regrasping, two-hand handover, juggling, plate spinning and Baoding balls"
 readme = "README.md"
 authors = [
     { name = "ruoyiqiao", email = "ryqiao1317@gmail.com" }
 ]
-requires-python = ">=3.13,<3.14"
+requires-python = ">=3.11,<3.15"
 license = "Apache-2.0"
 license-files = ["LICENSE", "NOTICE"]
 dependencies = [

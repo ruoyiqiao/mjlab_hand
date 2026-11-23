@@ -1,10 +1,10 @@
 # mjlab_hand
 
-[![Python](https://img.shields.io/badge/python-3.13-3776ab.svg)](https://www.python.org/)
-[![mjlab](https://img.shields.io/badge/mjlab-1.6.0-2f6fbf.svg)](https://github.com/mujocolab/mjlab)
-[![MuJoCo](https://img.shields.io/badge/simulator-MuJoCo-4b5563.svg)](https://github.com/google-deepmind/mujoco)
-[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json)](https://github.com/astral-sh/uv)
-[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11--3.14-3776ab.svg?labelColor=000000)](https://www.python.org/)
+[![mjlab](https://img.shields.io/badge/mjlab-1.6.0-2f6fbf.svg?labelColor=000000)](https://github.com/mujocolab/mjlab)
+[![MuJoCo](https://img.shields.io/badge/simulator-MuJoCo-4b5563.svg?labelColor=000000)](https://github.com/google-deepmind/mujoco)
+[![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json&labelColor=000000)](https://github.com/astral-sh/uv)
+[![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg?labelColor=000000)](LICENSE)
 
 Dexterous manipulation tasks based on [mjlab](https://github.com/mujocolab/mjlab), providing grasping, in-hand rotation, throwing, reorientation, regrasping, two-hand handover, juggling, plate-spinning and Baoding-ball tasks for `Allegro`, `LEAP`, `Shadow`, `Sharpa`, `Wuji`, and `XHand`. It also includes the implementation of [ContactExplorer](https://arxiv.org/abs/2603.10971), which comprises:
 
@@ -58,7 +58,7 @@ Most task ids name the hand, e.g. `Grasp-{Hand}`, where `{Hand}` is one of `Shad
 git clone https://github.com/ruoyiqiao/mjlab_hand.git
 cd mjlab_hand
 
-# Install locked dependencies (Python 3.13 required)
+# Install locked dependencies (Python 3.11 to 3.14)
 uv sync --locked
 ```
 
