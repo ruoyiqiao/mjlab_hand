@@ -1,0 +1,19 @@
+# README task gallery: the settings each clip in media/tasks/ was made with (tools/allegro4/make_gallery.sh).
+# seed / iteration: the training run and checkpoint of the clip; j2_allegro continued training from a warm start.
+# clip	task	seed	iteration	record_scene.py args	render_blender.py args	make_webp.py args
+grasp_shadow	Grasp-Shadow	42	7900	--seconds 6	--follow 0 --az 245 --el 24 --margin 1.08	--fps 25 --width 0 --quality 78
+inhand_allegro	InHand-Rotation-Allegro	42	5200	--num-envs 32 --seconds 40 --warmup-s 1 --fps 15 --pick goals	--frames 0:800:2 --margin 0.8 --ghost-side 0.13	--fps 10 --speed 1 --width 960 --quality 78
+throw_xhand	Grasp-Throw-XHand	43	2999	--seconds 8	--margin 0.75 --el 26	--fps 25 --width 0 --quality 78
+reorient_wuji	Object-Reorientation-Wuji	43	2600	--seconds 8	--margin 1.05	--fps 25 --width 0 --quality 78
+regrasp_leap	Regrasp-LEAP	42	2999	--seconds 6	--az 140 --el 22 --margin 1.0	--fps 25 --width 0 --quality 78
+dual_allegro	DualHand-Reorientation-Allegro-TrackSlew	49	19200	--seconds 8	--follow 0 --az 250 --el 22 --margin 1.08	--fps 25 --width 0 --quality 78
+plate_shadow	PlateSpin-Shadow	42	5999	--num-envs 16 --seconds 10 --fps 25 --seed 2001	--res 960x624 --samples 48 --follow 0 --margin 1.08 --az 90 --el 12	--fps 25 --width 0 --quality 78
+baoding_sharpa	Baoding-Sharpa-TiltThumb	42	2999	--num-envs 16 --seconds 10 --fps 25 --seed 2001	--res 960x624 --samples 48 --follow 0 --margin 1.08 --az 90 --el 20	--fps 25 --width 0 --quality 78
+j1_allegro	Juggle1-OneHand-Allegro	42	5999	--seconds 8	--follow 0 --az 20 --el 16 --margin 1.08 --res 720x900	--fps 33.333333333333336 --width 0 --quality 78
+j2_allegro	Juggle2-OneHand-Allegro-Entry6	58	14998	--seconds 8	--follow 0 --az 20 --el 16 --margin 1.08 --res 720x900	--fps 33.333333333333336 --width 0 --quality 78
+j2full_sharpa	Juggle2-OneHand-Sharpa-Full	44	2600	--seconds 8	--follow 0 --az 20 --el 16 --margin 1.08 --res 720x900	--fps 33.333333333333336 --width 0 --quality 78
+j3_cascade_leap	Juggle3-LEAP-Cascade-Residual	42	19999	--seconds 8	--follow 0 --az 0 --el 8 --margin 1.08 --res 720x900 --trail 0.4	--fps 33.333333333333336 --width 0 --quality 78
+j3_tennis_sharpa	Juggle3-Sharpa-Tennis	42	7999	--seconds 8	--follow 0 --az 0 --el 8 --margin 1.08 --res 720x900 --trail 0.4	--fps 33.333333333333336 --width 0 --quality 78
+j3_halfshower_shadow	Juggle3-Shadow-HalfShower	42	7999	--seconds 8	--follow 0 --az 0 --el 8 --margin 1.08 --res 720x900 --trail 0.4	--fps 33.333333333333336 --width 0 --quality 78
+j3_box_wuji	Juggle3-Wuji-Box	42	7999	--seconds 8 --set random_phase=true	--follow 0 --az 0 --el 8 --margin 1.08 --res 720x900 --trail 0.4	--fps 33.333333333333336 --width 0 --quality 78
+j3_shower_allegro	Juggle3-Allegro-Shower	42	19999	--seconds 8	--follow 0 --az 0 --el 8 --margin 1.08 --res 720x900 --trail 0.4	--fps 33.333333333333336 --width 0 --quality 78
