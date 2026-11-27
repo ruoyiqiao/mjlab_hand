@@ -30,13 +30,6 @@ SINGLE_TASKS = {
     "Regrasp": ("regrasp", make_regrasp_spec),
 }
 HANDS = tuple(h for h in HAND_SUFFIX if h != "allegro")
-# Default run length per (task, hand) where training longer scored lower on the held-out seeds: the reported
-# Sharpa and Shadow reorientation checkpoints come from 3000-iteration runs (Sharpa s43: 69.5 % after 3000
-# iterations, 39.9 % after 9000). The other single-hand tasks default to 10000.
-MAX_ITERATIONS = {
-    ("Object-Reorientation", "sharpa"): 3000,
-    ("Object-Reorientation", "shadow"): 3000,
-}
 
 
 def _register(hand: str) -> None:
@@ -49,9 +42,7 @@ def _register(hand: str) -> None:
             task_id=f"{task}-{HAND_SUFFIX[hand]}",
             env_cfg=cfg(),
             play_env_cfg=cfg(play=True),
-            rl_cfg=make_ppo_cfg(
-                f"{hand}_{exp}", max_iterations=MAX_ITERATIONS.get((task, hand), 10000)
-            ),
+            rl_cfg=make_ppo_cfg(f"{hand}_{exp}", max_iterations=10000),
             runner_cls=None,
         )
 
