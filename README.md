@@ -62,9 +62,6 @@ cd mjlab_hand
 uv sync --locked
 ```
 
-Training runs on an NVIDIA GPU with CUDA. `uv.lock` pins mjlab at commit [`51d54fc`](https://github.com/mujocolab/mjlab/commit/51d54fcc029dbf537a4f090413be0ba07d78e9a9)
-with MuJoCo and MuJoCo Warp 4.0.1, the versions all results were trained with.
-
 ## Quick Start
 
 List the registered tasks, optionally filtered by a keyword:
