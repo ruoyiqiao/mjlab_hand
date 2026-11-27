@@ -16,6 +16,9 @@ from mjlab_hand.tasks_common.hand_tasks import HAND_SUFFIX
 from mjlab_hand.tasks_common.rl import make_ppo_cfg
 
 JUGGLE_HANDS = ("leap", "wuji", "sharpa", "xhand", "shadow")
+# Default run length per (hand, balls) where training longer scored lower: Sharpa Juggle2 kept both balls up for the
+# full 10 s in 50 % of held-out episodes after 6000 iterations and in 8 % after 12000. The others default to 20000.
+MAX_ITERATIONS = {("sharpa", 2): 6000}
 
 
 def _spec(hand: str, num_balls: int):
@@ -32,7 +35,11 @@ for _h in JUGGLE_HANDS:
             task_id=f"Juggle{_nb}-OneHand-{HAND_SUFFIX[_h]}",
             env_cfg=make_juggle_env_cfg(_spec(_h, _nb)),
             play_env_cfg=make_juggle_env_cfg(_spec(_h, _nb), play=True),
-            rl_cfg=make_ppo_cfg(f"{_h}_juggle{_nb}_onehand", max_iterations=20000, init_std=0.5),
+            rl_cfg=make_ppo_cfg(
+                f"{_h}_juggle{_nb}_onehand",
+                max_iterations=MAX_ITERATIONS.get((_h, _nb), 20000),
+                init_std=0.5,
+            ),
             runner_cls=None,
         )
 

@@ -14,6 +14,7 @@ from mjlab.terrains import TerrainEntityCfg
 from mjlab.utils.noise import UniformNoiseCfg as Unoise
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.in_hand_rotation import mdp as rotation_mdp
 from mjlab_hand.in_hand_rotation.mdp import RotationCommandCfg
 from mjlab_hand.in_hand_rotation.mdp.actions import JointPositionEMAActionCfg
@@ -242,7 +243,7 @@ def make_rotation_env_cfg(
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=NUM_TRAIN_ENVS,
             env_spacing=0.75,
             sensors=_sensors,
         ),

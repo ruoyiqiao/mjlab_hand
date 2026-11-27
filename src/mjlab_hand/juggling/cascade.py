@@ -46,6 +46,7 @@ from mjlab.sim import MujocoCfg, SimulationCfg
 from mjlab.terrains import TerrainEntityCfg
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.juggling.juggle_env_cfg import CUP_POSE, make_ball_spec
 from mjlab_hand.robot.allegro import ALLEGRO_HAND_LEFT, ALLEGRO_HAND_RIGHT
 from mjlab_hand.tasks_common import mdp as tmdp
@@ -1206,7 +1207,7 @@ def make_cascade_env_cfg(sp: CascadeSpec, play: bool = False) -> ManagerBasedRlE
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=1 if play else NUM_TRAIN_ENVS,
             env_spacing=1.5,
             sensors=tuple(sensors),
         ),

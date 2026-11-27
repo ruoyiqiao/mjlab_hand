@@ -22,6 +22,7 @@ from mjlab.scene import SceneCfg
 from mjlab.terrains import TerrainEntityCfg
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.robot.allegro import ALLEGRO_HAND_LEFT, ALLEGRO_HAND_RIGHT
 from mjlab_hand.tasks_common import mdp as tmdp
 from mjlab_hand.tasks_common import sensors
@@ -147,7 +148,7 @@ def make_dual_hand_env_cfg(
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=1 if play else NUM_TRAIN_ENVS,
             env_spacing=2.0,
             sensors=tuple(sensor_cfgs),
         ),
