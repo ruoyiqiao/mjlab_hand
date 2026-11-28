@@ -24,6 +24,7 @@ from mjlab.sim import MujocoCfg, SimulationCfg
 from mjlab.terrains import TerrainEntityCfg
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.robot.allegro import ALLEGRO_HAND_RIGHT
 from mjlab_hand.tasks_common import mdp as tmdp
 from mjlab_hand.tasks_common import sensors
@@ -542,7 +543,7 @@ def make_single_hand_env_cfg(ts: SingleHandTaskSpec, play: bool = False) -> Mana
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=1 if play else NUM_TRAIN_ENVS,
             env_spacing=1.5,
             sensors=tuple(sensor_cfgs),
         ),

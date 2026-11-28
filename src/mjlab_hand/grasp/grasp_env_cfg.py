@@ -15,6 +15,7 @@ from mjlab.terrains import TerrainEntityCfg
 from mjlab.utils.noise import UniformNoiseCfg as Unoise
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.grasp import mdp as grasp_mdp
 from mjlab_hand.mdp.contact_sensor import (
     make_hand_force_sensor_cfg,
@@ -335,7 +336,7 @@ def make_grasp_env_cfg(
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=NUM_TRAIN_ENVS,
             env_spacing=1.0,
             sensors=(
                 make_keypoint_object_contact_sensor_cfg(spec.keypoint_geom_pattern),

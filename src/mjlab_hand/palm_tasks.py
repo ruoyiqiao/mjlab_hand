@@ -5,7 +5,8 @@
   fingers-down by ``hand_tilt``; ``Baoding-Sharpa-TiltThumb`` also rolls it toward the thumb by ``hand_roll``.
 * ``PlateSpin-<Hand>``: a dessert plate (flat well, sloped rim, foot ring) rests on the fingertips and the policy spins
   it about its own normal in the commanded direction. Only the last phalanges may touch the plate: other hand links
-  are penalised and palm contact ends the episode. The spin reward is scaled by the share of a three-finger support.
+  are penalised and palm contact ends the episode; tilting the palm is penalised and ends the episode beyond
+  ``max_palm_tilt``. The spin reward is scaled by the share of a three-finger support.
   The start state is measured per hand (tools/allegro4/plate_probe.py -> hand_params/plate.json): a finger pose whose
   fingertips alone carry the plate, and the pose the plate settles to on them, so an episode starts at rest.
 
@@ -37,8 +38,10 @@ from mjlab.scene import SceneCfg
 from mjlab.sensor import ContactMatch, ContactSensorCfg
 from mjlab.tasks.registry import register_mjlab_task
 from mjlab.terrains import TerrainEntityCfg
+from mjlab.utils.lab_api.math import quat_apply
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.juggling.juggle_env_cfg import (
     ANCHOR,
     CUP_POSE,
@@ -91,6 +94,8 @@ class PalmTaskSpec:
     reward_spin: float = 0.05
     reward_center: float = -0.5  # Baoding: distance of the ball centroid from the cup point (m)
     reward_tilt: float = -0.2  # plate: 1 - cos(plate tilt)
+    reward_palm_tilt: float = -2.0  # plate: 1 - cos(palm tilt); the palm normal starts vertical
+    max_palm_tilt: float = 0.5  # rad; plate: an episode ends beyond this palm tilt
     reward_nontip: float = -1.0  # plate: a hand link other than a last phalanx touches the plate
     reward_support: float = 0.01  # plate: min(fingers carrying it, 3) / 3
     reward_drop: float = -5.0
@@ -202,6 +207,12 @@ class SpinCommand(CommandTerm):
         # palm frame of the (tilted) anchor: e1 along the fingers, e2 lateral, up = palm normal
         R = torch.tensor(tilt_matrix(sp.hand_tilt, sp.hand_roll), dtype=torch.float32, device=dev)
         self.e1, self.e2, self.up = R[:, 0], R[:, 1], R[:, 2]
+        # the anchor's palm normal in the palm frame; plate: the palm tilt is measured against it
+        self.palm_normal_local = torch.tensor(
+            d.xmat[pid].reshape(3, 3).T @ tilt_matrix(sp.hand_tilt, sp.hand_roll)[:, 2],
+            dtype=torch.float32,
+            device=dev,
+        )
         pp = plate_params(sp.hand) if sp.task == "plate" else None
         self.plate_quat = torch.tensor(pp["plate_quat"] if pp else (1.0, 0.0, 0.0, 0.0), device=dev)
         self.dt = float(env.step_dt)
@@ -241,6 +252,12 @@ class SpinCommand(CommandTerm):
         v = p[:, 1] - p[:, 0]
         return torch.atan2((v * self.e2).sum(-1), (v * self.e1).sum(-1))
 
+    def palm_up(self) -> torch.Tensor:
+        """(N,) cos of the palm tilt against the anchor's palm normal (1 = as at the start)."""
+        q = self.hand.data.body_link_quat_w[:, self.palm_id]
+        n = quat_apply(q, self.palm_normal_local.expand(q.shape[0], 3))
+        return (n * self.up).sum(-1)
+
     def _found(self, sensor: str) -> torch.Tensor:
         return self._env.scene[sensor].data.found.reshape(self.num_envs, -1) > 0
 
@@ -261,7 +278,8 @@ class SpinCommand(CommandTerm):
         if self.sp.task == "plate":
             low = (p[..., 2] < rest[:, None, 2] - 0.04).any(-1)
             tipped = self.plate_normal()[:, 2] < 0.5
-            return low | far | tipped | self.palm_contact()
+            palm_tipped = self.palm_up() < math.cos(self.sp.max_palm_tilt)
+            return low | far | tipped | palm_tipped | self.palm_contact()
         low = (p[..., 2] < rest[:, None, 2] - 0.06).any(-1)
         return low | far
 
@@ -366,6 +384,10 @@ def reward_center(env, command_name: str = "spin"):
 
 def reward_tilt(env, command_name: str = "spin"):
     return 1.0 - get_spin(env, command_name).plate_normal()[:, 2].clamp(-1.0, 1.0)
+
+
+def reward_palm_tilt(env, command_name: str = "spin"):
+    return 1.0 - get_spin(env, command_name).palm_up().clamp(-1.0, 1.0)
 
 
 def reward_nontip(env, command_name: str = "spin"):
@@ -565,6 +587,7 @@ def make_palm_task_env_cfg(sp: PalmTaskSpec, play: bool = False) -> ManagerBased
     }
     if plate:
         rewards["tilt"] = RewardTermCfg(func=reward_tilt, weight=sp.reward_tilt)
+        rewards["palm_tilt"] = RewardTermCfg(func=reward_palm_tilt, weight=sp.reward_palm_tilt)
         rewards["nontip"] = RewardTermCfg(func=reward_nontip, weight=sp.reward_nontip)
         rewards["support"] = RewardTermCfg(func=reward_support, weight=sp.reward_support)
     else:
@@ -572,7 +595,7 @@ def make_palm_task_env_cfg(sp: PalmTaskSpec, play: bool = False) -> ManagerBased
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=1 if play else NUM_TRAIN_ENVS,
             env_spacing=1.0,
             sensors=plate_sensors(sp, prof) if plate else (),
         ),

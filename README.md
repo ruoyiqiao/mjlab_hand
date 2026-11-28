@@ -1,8 +1,8 @@
 # mjlab_hand
 
 [![Python](https://img.shields.io/badge/python-3.11--3.14-3776ab.svg?labelColor=000000)](https://www.python.org/)
-[![mjlab](https://img.shields.io/badge/mjlab-1.6.0-2f6fbf.svg?labelColor=000000)](https://github.com/mujocolab/mjlab)
-[![MuJoCo](https://img.shields.io/badge/simulator-MuJoCo-4b5563.svg?labelColor=000000)](https://github.com/google-deepmind/mujoco)
+[![mjlab](https://img.shields.io/badge/mjlab-main%4051d54fc-2f6fbf.svg?labelColor=000000)](https://github.com/mujocolab/mjlab/tree/51d54fcc029dbf537a4f090413be0ba07d78e9a9)
+[![MuJoCo Warp](https://img.shields.io/badge/MuJoCo%20Warp-4.0.1-4b5563.svg?labelColor=000000)](https://github.com/google-deepmind/mujoco_warp)
 [![uv](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/uv/main/assets/badge/v0.json&labelColor=000000)](https://github.com/astral-sh/uv)
 [![License](https://img.shields.io/badge/license-Apache--2.0-blue.svg?labelColor=000000)](LICENSE)
 
@@ -61,8 +61,6 @@ cd mjlab_hand
 # Install locked dependencies (Python 3.11 to 3.14)
 uv sync --locked
 ```
-
-Training runs on an NVIDIA GPU with CUDA.
 
 ## Quick Start
 

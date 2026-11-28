@@ -34,6 +34,7 @@ from mjlab.sim import MujocoCfg, SimulationCfg
 from mjlab.terrains import TerrainEntityCfg
 from mjlab.viewer import ViewerConfig
 
+from mjlab_hand.defaults import NUM_TRAIN_ENVS
 from mjlab_hand.juggling import mdp as jmdp
 from mjlab_hand.robot.allegro import ALLEGRO_HAND_LEFT
 from mjlab_hand.tasks_common import mdp as tmdp
@@ -339,7 +340,7 @@ def make_juggle_env_cfg(js: JuggleSpec, play: bool = False) -> ManagerBasedRlEnv
     cfg = ManagerBasedRlEnvCfg(
         scene=SceneCfg(
             terrain=TerrainEntityCfg(terrain_type="plane"),
-            num_envs=1,
+            num_envs=1 if play else NUM_TRAIN_ENVS,
             env_spacing=1.0,
             sensors=tuple(sensors),
         ),

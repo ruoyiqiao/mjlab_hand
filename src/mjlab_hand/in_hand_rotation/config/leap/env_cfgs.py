@@ -15,6 +15,7 @@ def leap_rotation_env_cfg(
     cfg.commands["rotation"].goal_pos_offset_from_hand_base = (0.0, 0.0, 0.22)
 
     if play:
+        cfg.scene.num_envs = 1
         cfg.episode_length_s = int(1e9)
         cfg.observations["actor"].enable_corruption = False
 
