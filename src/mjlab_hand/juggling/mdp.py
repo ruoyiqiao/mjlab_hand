@@ -383,6 +383,10 @@ class JuggleCommand(CommandTerm):
         if self.num_active > 1:
             self.flying[env_ids, 1] = True
             self.flight_t[env_ids, 1] = self.cfg.min_flight_s
+        # This step's state is final: the observation computed right after an explicit env.reset() must not run
+        # update() again (that advanced the clock by one step and set ball A in contact, unlike every reset inside
+        # env.step during training, where update() has already run for the step).
+        self._last_step = int(self._env.common_step_counter)
         return super().reset(env_ids)
 
     def _update_command(self, env_ids: torch.Tensor | None = None) -> None:
